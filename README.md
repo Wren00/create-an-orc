@@ -1,6 +1,7 @@
 README for Create An Orc project
-<br />s
+<br />
 **Intro**
+<br />
 This website will be a single page webapp that provides a randomised name, stats, an AI description built from a randomised prompt and a visual
 picture of your character made from randomised pieces of pixel character art. This fantasy character will be an "orc" 
 which will be communicated in the branding of the site.
@@ -9,6 +10,7 @@ The randomised character will be regenerated on a page refresh. This is to quick
 seeking an idea for art or writing a compelling starting off point.
 <br />
 **Problem Definition**
+<br />
 Creating a new character for a series or for a TTRPG can sometimes be a daunting process if people are
 experiencing a creative block. 
 This project intends to provide a compelling starting off point to encourage user ideas and creativity.
@@ -17,6 +19,7 @@ able to eventually include some more incentives for repeat users like saving and
 favourite random prompts.
 <br />
 **Who is it for?**
+<br />
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
 prompt to form an idea for a fantasy character.
 <br />
@@ -34,25 +37,27 @@ These individual images are layered together on the screen and will appear in th
 - A randomised description created via prompts to Open AI. The prompts should have randomised values each time it is sent
 through to the AI. The AI generates the description which will be sent back and displayed.
 - Some randomised stats
-
+<br />
 **Should have**
+<br />
 - User accounts where a user can save instances of characters that they wish to keep record of.
 - Rate limiting to prevent an overload of AI requests.
 - The website should be viewable and usable on different screen sizes.
-
-
+<br />
 **Could have**
+<br />
 - Eventually expand to other kinds of fantasy characters, like elves, dwarves etc. Each new type of potential character
 will need to be added as separate updates.
 - Users can share their favourite creations with other users.
-
+<br />
 **Won't have**
+<br />
 - A full gameified character sheet for ttrpg players as this would be too complex.
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
 creativity.
-
+<br />
 **Terms**
-
+<br />
 - a **User** is any person accessing the website and viewing a randomised character
 - an **Orc** is the randomly generated character that is returned via the randomiser code and the AI.
 - a **Prompt** is a randomised adjective that will be provided in threes to the AI to generate a
