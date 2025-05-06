@@ -68,14 +68,18 @@ creativity.
 **Terms**
 <br />
 - a **User** is any person accessing the website and viewing a randomised character
+<br />
 - an **Orc** is the randomly generated character that is returned via the randomiser code and the AI.
+<br />
 - a **Prompt** is a randomised adjective that will be provided in threes to the AI to generate a
 character. For example an orc may be:
 - adventurous
 - poor
 - good
 These adjectives will be stored in a database and retrieved before the prompt is sent through.
+<br />
 - a **Description** is a block of generated backstory for the orc taken from the prompts. This should be no
 longer than 2 paragraphs.
+<br />
 - a **Name** is a randomly generated name built from 1/2/3 syllables stored within the database. On
 generation a random number will be selected and the needed number of syllables will be retrieved.
