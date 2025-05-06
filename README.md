@@ -7,8 +7,8 @@ which will be communicated in the branding of the site.
 The generation of a short description of the character will be done through prompts to Open AI.
 The randomised character will be regenerated on a page refresh. This is to quickly give a user 
 seeking an idea for art or writing a compelling starting off point.
-
-
+/b
+/b
 **Problem Definition**
 Creating a new character for a series or for a TTRPG can sometimes be a daunting process if people are
 experiencing a creative block. 
@@ -16,13 +16,13 @@ This project intends to provide a compelling starting off point to encourage use
 The design will focus on accessibility and speed to get creatives thinking with minimal effort, but will be
 able to eventually include some more incentives for repeat users like saving and sharing their 
 favourite random prompts. 
-
+/b
 **Who is it for?**
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
 prompt to form an idea for a fantasy character.
-
-
-MOSCOW analysis
+/b
+/b
+**MOSCOW analysis**
 
 **Must have**
 
