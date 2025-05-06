@@ -1,16 +1,24 @@
 README for Create An Orc project
 
-This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone looking for a quick
-prompt to form an idea for a fantasy character. 
-In the initial case this will be creating an orc but the ideas provided can be translated to other fantasy characters.
+**Intro**
+This website will provide a randomised name, stats, an AI description built from a randomised prompt and a visual
+picture of your character made from randomised pieces of pixel character art. This fantasy character will be an "orc" 
+which will be communicated in the branding of the site.
 
-The website is at MVP phase a single page webapp that provides a randomised pixel art visual of the orc, then a randomised
+
+**Problem Definition**
+The MVP is a single page webapp that provides a randomised pixel art visual of the orc, then a randomised
 background for the orc. What is returned should change on page refresh with rate limiting considered for the AI section.
 Some pixel art has already been created by the developer. 
 The generation of a short description of the character will be done through prompts to Open AI.
+This is to quickly give a user seeking a quick idea for art or writing a compelling starting off point.
+
+**Who is it for?**
+This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
+prompt to form an idea for a fantasy character.
 
 
-MOSCOW targets
+MOSCOW analysis
 
 **Must have**
 
@@ -26,12 +34,17 @@ through to the AI. The AI generates the description which will be sent back and 
 - Some randomised stats
 
 **Should have**
-- User accounts where they can save instances of characters that they wish to keep.
+- User accounts where a user can save instances of characters that they wish to keep record of.
 - Rate limiting to prevent an overload of AI requests.
+- The website should be viewable and usable on different screen sizes.
 
 
 **Could have**
-- Eventually expand to other kinds of fantasy characters, like elves, dwarves etc.
+- Eventually expand to other kinds of fantasy characters, like elves, dwarves etc. Each new type of potential character
+will need to be added as separate updates.
+- Users can share their favourite creations with other users.
 
 **Won't have**
-- A full gameified character sheet as this would be too complex.# create-an-orc
+- A full gameified character sheet for ttrpg players as this would be too complex.
+- A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
+creativity.
