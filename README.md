@@ -1,5 +1,6 @@
 README for Create An Orc project
 <br />
+<br />
 **Intro**
 <br />
 This website will be a single page webapp that provides a randomised name, stats, an AI description built from a randomised prompt and a visual
@@ -8,6 +9,7 @@ which will be communicated in the branding of the site.
 The generation of a short description of the character will be done through prompts to Open AI.
 The randomised character will be regenerated on a page refresh. This is to quickly give a user 
 seeking an idea for art or writing a compelling starting off point.
+<br />
 <br />
 **Problem Definition**
 <br />
@@ -18,12 +20,15 @@ The design will focus on accessibility and speed to get creatives thinking with 
 able to eventually include some more incentives for repeat users like saving and sharing their 
 favourite random prompts.
 <br />
+<br />
 **Who is it for?**
 <br />
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
 prompt to form an idea for a fantasy character.
 <br />
+<br />
 **MOSCOW analysis**
+<br />
 <br />
 **Must have**
 <br/>
@@ -38,11 +43,13 @@ These individual images are layered together on the screen and will appear in th
 through to the AI. The AI generates the description which will be sent back and displayed.
 - Some randomised stats
 <br />
+<br />
 **Should have**
 <br />
 - User accounts where a user can save instances of characters that they wish to keep record of.
 - Rate limiting to prevent an overload of AI requests.
 - The website should be viewable and usable on different screen sizes.
+<br />
 <br />
 **Could have**
 <br />
@@ -50,11 +57,13 @@ through to the AI. The AI generates the description which will be sent back and 
 will need to be added as separate updates.
 - Users can share their favourite creations with other users.
 <br />
+<br />
 **Won't have**
 <br />
 - A full gameified character sheet for ttrpg players as this would be too complex.
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
 creativity.
+<br />
 <br />
 **Terms**
 <br />
