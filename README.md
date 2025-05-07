@@ -32,37 +32,37 @@ prompt to form an idea for a fantasy character.
 <br />
 **Must have**
 <br/>
-- A pixel art image of the randomised character. This has been created through:
-1. A shadow base
-2. A face with skin colour
-3. Upper torso clothes
-4. Lower torso clothes
-These individual images are layered together on the screen and will appear in the same place on page refresh.
-- A randomised name which has been built out of syllables provided in a JSON file.
+- A pixel art image of the randomised character. This has been created through: <br />
+1. A shadow base <br />
+2. A face with skin colour <br />
+3. Upper torso clothes <br />
+4. Lower torso clothes <br />
+These individual images are layered together on the screen and will appear in the same place on page refresh. <br />
+- A randomised name which has been built out of syllables provided in a JSON file. <br />
 - A randomised description created via prompts to Open AI. The prompts should have randomised values each time it is sent
-through to the AI. The AI generates the description which will be sent back and displayed.
+through to the AI. The AI generates the description which will be sent back and displayed. <br />
 - Some randomised stats
 <br />
 <br />
 **Should have**
 <br />
-- User accounts where a user can save instances of characters that they wish to keep record of.
-- Rate limiting to prevent an overload of AI requests.
-- The website should be viewable and usable on different screen sizes.
+- User accounts where a user can save instances of characters that they wish to keep record of. <br />
+- Rate limiting to prevent an overload of AI requests. <br />
+- The website should be viewable and usable on different screen sizes. <br />
 <br />
 <br />
 **Could have**
 <br />
 - Eventually expand to other kinds of fantasy characters, like elves, dwarves etc. Each new type of potential character
-will need to be added as separate updates.
-- Users can share their favourite creations with other users.
+will need to be added as separate updates. <br />
+- Users can share their favourite creations with other users. <br />
 <br />
 <br />
 **Won't have**
 <br />
-- A full gameified character sheet for ttrpg players as this would be too complex.
+- A full gameified character sheet for ttrpg players as this would be too complex. <br />
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
-creativity.
+creativity. <br />
 <br />
 <br />
 **Terms**
@@ -72,10 +72,10 @@ creativity.
 - an **Orc** is the randomly generated character that is returned via the randomiser code and the AI.
 <br />
 - a **Prompt** is a randomised adjective that will be provided in threes to the AI to generate a
-character. For example an orc may be:
-- adventurous
-- poor
-- good
+character. For example an orc may be:<br />
+- adventurous<br />
+- poor<br />
+- good<br />
 These adjectives will be stored in a database and retrieved before the prompt is sent through.
 <br />
 - a **Description** is a block of generated backstory for the orc taken from the prompts. This should be no
