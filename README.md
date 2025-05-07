@@ -1,7 +1,7 @@
 README for Create An Orc project
 <br />
 <br />
-**Intro**
+## Intro
 <br />
 This website will be a single page webapp that provides a randomised name, stats, an AI description built from a randomised prompt and a visual
 picture of your character made from randomised pieces of pixel character art. This fantasy character will be an "orc" 
@@ -10,8 +10,8 @@ The generation of a short description of the character will be done through prom
 The randomised character will be regenerated on a page refresh. This is to quickly give a user 
 seeking an idea for art or writing a compelling starting off point.
 <br />
-<br />
-**Problem Definition**
+
+## Problem Definition
 <br />
 Creating a new character for a series or for a TTRPG can sometimes be a daunting process if people are
 experiencing a creative block. 
@@ -21,13 +21,13 @@ able to eventually include some more incentives for repeat users like saving and
 favourite random prompts.
 <br />
 <br />
-**Who is it for?**
+## Who is it for?
 <br />
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
 prompt to form an idea for a fantasy character.
 <br />
-<br />
-**MOSCOW analysis**
+
+## MOSCOW analysis
 <br />
 <br />
 **Must have**
@@ -43,25 +43,29 @@ These individual images are layered together on the screen and will appear in th
 through to the AI. The AI generates the description which will be sent back and displayed. <br />
 - Some randomised stats
 <br />
-**Should have**
+
+## Should have
 <br />
 - User accounts where a user can save instances of characters that they wish to keep record of. <br />
 - Rate limiting to prevent an overload of AI requests. <br />
 - The website should be viewable and usable on different screen sizes. <br />
 <br />
-**Could have**
+
+## Could have
 <br />
 - Eventually expand to other kinds of fantasy characters, like elves, dwarves etc. Each new type of potential character
 will need to be added as separate updates. <br />
 - Users can share their favourite creations with other users. <br />
 <br />
-**Won't have**
+
+## Won't have
 <br />
 - A full gameified character sheet for ttrpg players as this would be too complex. <br />
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
 creativity. <br />
 <br />
-**Terms**
+
+## Terms
 <br />
 - a **User** is any person accessing the website and viewing a randomised character
 <br /> <br />
@@ -79,3 +83,21 @@ longer than 2 paragraphs.
 <br /> <br />
 - a **Name** is a randomly generated name built from 1/2/3 syllables stored within the database. On
 generation a random number will be selected and the needed number of syllables will be retrieved.
+
+## Domain Model Design
+
+```mermaid
+---
+title: Create An Orc Domain Model
+---
+erDiagram
+USER ||--|{ ORC : creates
+USER ||--|{ PROMPTS : creates
+ORC ||--|| NAME : has
+ORC ||--|| IMAGE : has
+ORC ||--|| DESCRIPTION : has
+PROMPTS ||--|{ ADJECTIVES : contains
+IMAGE ||--|{ PARTS : has
+DESCRIPTION ||--|{ CONTENT : contains   	
+NAME ||--|{ SYLLABLES : contains
+```
