@@ -2,7 +2,6 @@
 <br />
 
 ## Intro
-<br />
 This website will be a single page webapp that provides a randomised name, stats, an AI description built from a randomised prompt and a visual
 picture of your character made from randomised pieces of pixel character art. This fantasy character will be an "orc" 
 which will be communicated in the branding of the site.
@@ -12,7 +11,6 @@ seeking an idea for art or writing a compelling starting off point.
 <br />
 
 ## Problem Definition
-<br />
 Creating a new character for a series or for a TTRPG can sometimes be a daunting process if people are
 experiencing a creative block. 
 This project intends to provide a compelling starting off point to encourage user ideas and creativity.
@@ -22,16 +20,15 @@ favourite random prompts.
 <br />
 
 ## Who is it for?
-<br />
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
 prompt to form an idea for a fantasy character.
+<br />
 <br />
 
 ## MOSCOW analysis
 <br />
 
 ## Must have
-<br/>
 - A pixel art image of the randomised character. This has been created through: <br />
 1. A shadow base <br />
 2. A face with skin colour <br />
@@ -45,21 +42,18 @@ through to the AI. The AI generates the description which will be sent back and 
 <br />
 
 ## Should have
-<br />
 - User accounts where a user can save instances of characters that they wish to keep record of. <br />
 - Rate limiting to prevent an overload of AI requests. <br />
 - The website should be viewable and usable on different screen sizes. <br />
 <br />
 
 ## Could have
-<br />
 - Eventually expand to other kinds of fantasy characters, like elves, dwarves etc. Each new type of potential character
 will need to be added as separate updates. <br />
 - Users can share their favourite creations with other users. <br />
 <br />
 
 ## Won't have
-<br />
 - A full gameified character sheet for ttrpg players as this would be too complex. <br />
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
 creativity. <br />
@@ -83,6 +77,7 @@ longer than 2 paragraphs.
 <br /> <br />
 - a **Name** is a randomly generated name built from 1/2/3 syllables stored within the database. On
 generation a random number will be selected and the needed number of syllables will be retrieved.
+<br />
 
 ## Domain Model Design
 
