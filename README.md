@@ -43,13 +43,11 @@ These individual images are layered together on the screen and will appear in th
 through to the AI. The AI generates the description which will be sent back and displayed. <br />
 - Some randomised stats
 <br />
-<br />
 **Should have**
 <br />
 - User accounts where a user can save instances of characters that they wish to keep record of. <br />
 - Rate limiting to prevent an overload of AI requests. <br />
 - The website should be viewable and usable on different screen sizes. <br />
-<br />
 <br />
 **Could have**
 <br />
@@ -57,29 +55,27 @@ through to the AI. The AI generates the description which will be sent back and 
 will need to be added as separate updates. <br />
 - Users can share their favourite creations with other users. <br />
 <br />
-<br />
 **Won't have**
 <br />
 - A full gameified character sheet for ttrpg players as this would be too complex. <br />
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
 creativity. <br />
 <br />
-<br />
 **Terms**
 <br />
 - a **User** is any person accessing the website and viewing a randomised character
-<br />
+<br /> <br />
 - an **Orc** is the randomly generated character that is returned via the randomiser code and the AI.
-<br />
+<br /> <br />
 - a **Prompt** is a randomised adjective that will be provided in threes to the AI to generate a
 character. For example an orc may be:<br />
 - adventurous<br />
 - poor<br />
 - good<br />
 These adjectives will be stored in a database and retrieved before the prompt is sent through.
-<br />
+<br /> <br />
 - a **Description** is a block of generated backstory for the orc taken from the prompts. This should be no
 longer than 2 paragraphs.
-<br />
+<br /> <br />
 - a **Name** is a randomly generated name built from 1/2/3 syllables stored within the database. On
 generation a random number will be selected and the needed number of syllables will be retrieved.
