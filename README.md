@@ -1,4 +1,4 @@
-README for Create An Orc project
+## README for Create An Orc project
 <br />
 <br />
 ## Intro
@@ -20,7 +20,7 @@ The design will focus on accessibility and speed to get creatives thinking with 
 able to eventually include some more incentives for repeat users like saving and sharing their 
 favourite random prompts.
 <br />
-<br />
+
 ## Who is it for?
 <br />
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
@@ -29,8 +29,8 @@ prompt to form an idea for a fantasy character.
 
 ## MOSCOW analysis
 <br />
-<br />
-**Must have**
+
+## Must have
 <br/>
 - A pixel art image of the randomised character. This has been created through: <br />
 1. A shadow base <br />
