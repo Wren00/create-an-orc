@@ -21,7 +21,7 @@ prompt to form an idea for a fantasy character.
 
 ## MOSCOW analysis
 
-## Must have
+### Must have
 - A pixel art image of the randomised character. This has been created through:
   - A shadow base 
   - A face with skin colour 
@@ -32,18 +32,15 @@ prompt to form an idea for a fantasy character.
 - A randomised description created via prompts to Open AI. The prompts should have randomised values each time it is sent
 through to the AI. The AI generates the description which will be sent back and displayed.
 - Randomised Stats for the character
-
-## Should have
+### Should have
 - User accounts where a user can save instances of characters that they wish to keep record of. 
 - Rate limiting to prevent an overload of AI requests. 
 - The website should be viewable and usable on different screen sizes. 
-
-## Could have
+### Could have
 - Eventually expand to other kinds of fantasy characters, like elves, dwarves etc. Each new type of potential character
 will need to be added as separate updates. 
 - Users can share their favourite creations with other users. 
-
-## Won't have
+### Won't have
 - A full gameified character sheet for ttrpg players as this would be too complex. 
 - A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
 creativity. 
@@ -59,13 +56,10 @@ PROMPTS ||--|{ CHARACTERS : creates
 
 ### Dictionary
 - **User**: Any person accessing the website and viewing a randomised character
- 
 - **Character**: The generated characters that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
- 
 - **Prompt**: Randomised adjectives that will be provided in threes to the AI to generate a
 character. For example an orc character may be:
   - Adventurous
   - Poor
   - Good
-
 - **Catalogue**: Syllables stored within the databases used for the purpose of character name generation and suplementing prompts with Retrieval Augemented Generation (RAG).
