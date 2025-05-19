@@ -71,30 +71,34 @@ Users{
 }
 Prompts{
  	id int PK
-	text string 
+	text string
+	user_id FK
 }
 Characters{
  	id int PK
 	name string
-	character_image_id int FK
+	pronpt_id FK
 }
-Character_image_full {
+Character_image {
 	id int PK
-	head_image string FK
-	torso_image string FK
-	legs_image string FK
+	head int FK
+	torso int FK
+	legs int FK
+	character_id FK
 }
-Character_image_head {
-	id int PK
-	head_image_url string
+Character_body_part_images
+	id int
+	url text 
+	character_body_part_type_id int FK
 }
-Character_image_torso {
+Character_body_part_image_types {
 	id int PK
-	torso_image_url string
+	name string
 }
-Character_image_legs {
+Character_catalogue {
 	id int PK
-	legs_image_url string
+	character_id FK
+	catalogue_id FK
 }
 Catalogue {
     id int PK
