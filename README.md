@@ -54,8 +54,8 @@ CHARACTERS ||--|{ CHARACTER_IMAGES : owns
 CHARACTERS ||--|{ PROMPTS : utilizes
 CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : utilizes
 CHARACTER_BODY_PART_IMAGES ||--|{ CHARACTER_BODY_PART_TYPE : utilizes
-CHARACTER_CATALOGUE ||--|{ CHARACTER_ID : utilizes
-CHARACTER_CATALOGUE ||--|{ CATALOGUE_ID : utilizes
+CHARACTER_CATALOGUE ||--|{ CHARACTERS : utilizes
+CHARACTER_CATALOGUE ||--|{ PROMPTS : utilizes
 PROMPTS ||--|{ CATALOGUE : utilizes
 PROMPTS ||--|{ CHARACTERS : creates
 ```
@@ -99,8 +99,8 @@ Character_body_part_image_types {
 }
 Character_catalogue {
 	id int PK
-	character_id FK
-	catalogue_id FK
+	character_id int FK
+	catalogue_id int FK
 }
 Catalogue {
     id int PK
