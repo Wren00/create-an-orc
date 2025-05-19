@@ -57,29 +57,46 @@ PROMPTS ||--|{ CHARACTERS : creates
 ## Entity Relationship Diagram
 ```mermaid
 erDiagram
-	Users{
- 	id int PK
-    user_name string
-    email_address string
-    user_password string
-    available_tokens int
-    profile_id int
+Users{
+	id int PK
+	user_name string
+	email_address string
+	user_password string
+	available_tokens int
+	profile_id int
 }
 Prompts{
  	id int PK
-    text string 
+	text string 
 }
 Characters{
  	id int PK
-    name string
-    character_image_id int FK
+	name string
+	character_image_id int FK
+}
+Character_image_full {
+	id int PK
+	head_image string FK
+	torso_image string FK
+	legs_image string FK
+}
+Character_image_head {
+	id int PK
+	head_image_url string
+}
+Character_image_torso {
+	id int PK
+	torso_image_url string
+}
+Character_image_legs {
+	id int PK
+	legs_image_url string
 }
 Catalogue {
     id int PK
     syllable string
 }
 ```
-
 
 ### Dictionary
 - **User**: Any person accessing the website and viewing a randomised character
