@@ -50,10 +50,12 @@ creativity.
 erDiagram
 USERS ||--|{ CHARACTERS : owns
 USERS ||--|{ PROMPTS : creates
-CHARACTERS ||--|{ CHARACTER_IMAGE_FULL : owns
-CHARACTER_IMAGE_FULL ||--|{ CHARACTER_IMAGE_HEAD : has
-CHARACTER_IMAGE_FULL ||--|{ CHARACTER_IMAGE_TORSO : has
-CHARACTER_IMAGE_FULL ||--|{ CHARACTER_IMAGE_LEGS : has
+CHARACTERS ||--|{ CHARACTER_IMAGES : owns
+CHARACTERS ||--|{ PROMPTS : utilizes
+CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : utilizes
+CHARACTER_BODY_PART_IMAGES ||--|{ CHARACTER_BODY_PART_TYPE : utilizes
+CHARACTER_CATALOGUE ||--|{ CHARACTER_ID : utilizes
+CHARACTER_CATALOGUE ||--|{ CATALOGUE_ID : utilizes
 PROMPTS ||--|{ CATALOGUE : utilizes
 PROMPTS ||--|{ CHARACTERS : creates
 ```
@@ -77,9 +79,9 @@ Prompts{
 Characters{
  	id int PK
 	name string
-	pronpt_id FK
+	pronpt_id int FK
 }
-Character_image {
+Character_images {
 	id int PK
 	head int FK
 	torso int FK
