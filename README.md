@@ -51,11 +51,10 @@ erDiagram
 USERS ||--|{ CHARACTERS : owns
 USERS ||--|{ PROMPTS : creates
 CHARACTERS ||--|{ CHARACTER_IMAGES : owns
+CHARACTERS ||--|{ CHARACTER_CATALOGUE : utilizes
+CHARACTER_CATALOGUE }|--|| CATALOGUE : utilizes
 CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : utilizes
-CHARACTER_BODY_PART_IMAGES ||--|{ CHARACTER_BODY_PART_TYPE : utilizes
-CHARACTER_CATALOGUE ||--|{ CHARACTERS : utilizes
-CHARACTER_CATALOGUE ||--|{ PROMPTS : utilizes
-PROMPTS ||--|{ CATALOGUE : utilizes
+CHARACTER_BODY_PART_IMAGES }|--|| CHARACTER_BODY_PART_IMAGE_TYPE : creates
 PROMPTS ||--|{ CHARACTERS : creates
 ```
 
@@ -73,7 +72,7 @@ Users{
 Prompts{
  	id int PK
 	text string
-	user_id FK
+	user_id int FK
 }
 Characters{
  	id int PK
