@@ -54,7 +54,7 @@ CHARACTERS ||--|{ CHARACTER_IMAGES : owns
 CHARACTERS ||--|{ CHARACTER_CATALOGUE : utilizes
 CHARACTER_CATALOGUE }|--|| CATALOGUE : utilizes
 CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : utilizes
-CHARACTER_BODY_PART_IMAGES }|--|| CHARACTER_BODY_PART_IMAGE_TYPE : creates
+CHARACTER_BODY_PART_IMAGES }|--|| CHARACTER_BODY_PART_IMAGE_TYPES : creates
 PROMPTS ||--|{ CHARACTERS : creates
 ```
 
@@ -86,7 +86,7 @@ Character_images {
 	legs int FK
 	character_id int FK
 }
-Character_body_part_images
+Character_body_part_images {
 	id int
 	url text 
 	character_body_part_type_id int FK
