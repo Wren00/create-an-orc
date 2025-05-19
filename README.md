@@ -54,6 +54,33 @@ PROMPTS ||--|{ CATALOGUE : utilizes
 PROMPTS ||--|{ CHARACTERS : creates
 ```
 
+## Entity Relationship Diagram
+```mermaid
+erDiagram
+	Users{
+ 	id int PK
+    user_name string
+    email_address string
+    user_password string
+    available_tokens int
+    profile_id int
+}
+Prompts{
+ 	id int PK
+    text string 
+}
+Characters{
+ 	id int PK
+    name string
+    character_image_id int FK
+}
+Catalogue {
+    id int PK
+    syllable string
+}
+```
+
+
 ### Dictionary
 - **User**: Any person accessing the website and viewing a randomised character
 - **Character**: The generated characters that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
