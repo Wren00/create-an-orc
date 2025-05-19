@@ -84,7 +84,7 @@ Character_images {
 	head int FK
 	torso int FK
 	legs int FK
-	character_id FK
+	character_id int FK
 }
 Character_body_part_images
 	id int
