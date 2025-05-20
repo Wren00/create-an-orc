@@ -68,6 +68,8 @@ character. For example an orc character may be:
 ## Entity Relationship Diagram
 ```mermaid
 erDiagram
+USERS ||--|{ PROMPTS : creates
+USERS ||--|{ CHARACTERS : owns
 Users {
 	id int PK
 	user_name string
@@ -111,7 +113,6 @@ Catalogue {
     id int PK
     syllable string
 }
-	USERS ||--|{ PROMPTS : creates
 	CHARACTERS ||--|{ PROMPTS : uses
 	CHARACTERS ||--|| CHARACTER_IMAGES : has
 	CHARACTER_IMAGES ||--{{ CHARACTER_BODY_PART_IMAGES : has many
