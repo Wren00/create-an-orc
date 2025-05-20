@@ -69,23 +69,7 @@ character. For example an orc character may be:
 ```mermaid
 erDiagram
 direction TB
-CUSTOMER ||--o{ ORDER : places
-    CUSTOMER {
-        string name
-        string custNumber
-        string sector
-    }
-    ORDER ||--|{ LINE-ITEM : contains
-    ORDER {
-        int orderNumber
-        string deliveryAddress
-    }
-    LINE-ITEM {
-        string productCode
-        int quantity
-        float pricePerUnit
-    }
-Users {
+USERS {
 	id int PK
 	user_name string
 	email_address string
@@ -93,44 +77,43 @@ Users {
 	available_tokens int
 	profile_id int
 }
-Prompts {
+PROMPTS {
  	id int PK
 	text string
 	user_id int FK
 }
-USERS ||--|{ PROMPTS : creates
-Characters {
+CHARACTERS {
  	id int PK
 	name string
 	pronpt_id int FK
 	character_images_id int FK
 }
-USERS ||--|{ CHARACTERS : owns
-Character_images {
+CHARACTER_IMAGES {
 	id int PK
 	head int FK
 	torso int FK
 	legs int FK
 }
-Character_body_part_images {
+CHARACTER_BODY_PART_IMAGES {
 	id int
 	url text 
 	character_body_part_type_id int FK
 }
-Character_body_part_image_types {
+CHARACTER_BODY_PART_IMAGE_TYPES {
 	id int PK
 	name string
 }
-Character_catalogue {
+CHARACTER-CATALOGUE {
 	id int PK
 	character_id int FK
 	catalogue_id int FK
 }
-Catalogue {
+CATALOGUE {
     id int PK
     syllable string
 }
-
+	USERS ||--|{ PROMPTS : creates
+	USERS ||--|{ CHARACTERS : owns
 	CHARACTERS ||--|{ PROMPTS : uses
 	CHARACTERS ||--|| CHARACTER_IMAGES : has
 	CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : uses
