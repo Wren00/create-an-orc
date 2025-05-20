@@ -103,7 +103,7 @@ CHARACTER_BODY_PART_IMAGE_TYPES {
 	id int PK
 	name string
 }
-CHARACTER-CATALOGUE {
+CHARACTER_CATALOGUE {
 	id int PK
 	character_id int FK
 	catalogue_id int FK
