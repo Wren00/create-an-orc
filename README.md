@@ -54,6 +54,17 @@ CHARACTERS ||--|{ CATALOGUE : utilizes
 PROMPTS ||--|{ CHARACTERS : creates
 ```
 
+### Dictionary
+- **User**: Any person accessing the website and viewing a randomised character
+- **Character**: The generated characters that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
+- **Prompt**: Randomised adjectives that will be provided in threes to the AI to generate a
+character. For example an orc character may be:
+  - Adventurous
+  - Poor
+  - Good
+- **Catalogue**: Syllables stored within the databases used for the purpose of character name generation and suplementing prompts with Retrieval Augemented Generation (RAG).
+- 
+
 ## Entity Relationship Diagram
 ```mermaid
 erDiagram
@@ -102,12 +113,3 @@ Catalogue {
 }
 ```
 
-### Dictionary
-- **User**: Any person accessing the website and viewing a randomised character
-- **Character**: The generated characters that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
-- **Prompt**: Randomised adjectives that will be provided in threes to the AI to generate a
-character. For example an orc character may be:
-  - Adventurous
-  - Poor
-  - Good
-- **Catalogue**: Syllables stored within the databases used for the purpose of character name generation and suplementing prompts with Retrieval Augemented Generation (RAG).
