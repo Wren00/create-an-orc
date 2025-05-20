@@ -68,7 +68,7 @@ character. For example an orc character may be:
 ## Entity Relationship Diagram
 ```mermaid
 erDiagram
-Users{
+Users {
 	id int PK
 	user_name string
 	email_address string
@@ -76,22 +76,22 @@ Users{
 	available_tokens int
 	profile_id int
 }
-Prompts{
+Prompts {
  	id int PK
 	text string
 	user_id int FK
 }
-Characters{
+Characters {
  	id int PK
 	name string
 	pronpt_id int FK
+	character_images_id int FK
 }
 Character_images {
 	id int PK
 	head int FK
 	torso int FK
 	legs int FK
-	character_id int FK
 }
 Character_body_part_images {
 	id int
@@ -111,5 +111,13 @@ Catalogue {
     id int PK
     syllable string
 }
+	USERS ||--|{ PROMPTS : creates
+	CHARACTERS ||--|{ PROMPTS : uses
+	CHARACTERS ||--|| CHARACTER_IMAGES : has
+	CHARACTER_IMAGES ||--{{ CHARACTER_BODY_PART_IMAGES : has many
+	CHARACTER_BODY_PART_IMAGES }|--{{ CHARACTER_BODY_PART_IMAGE_TYPES : many has many 
+	CHARACTER_CATALOGUE ||--|{ CHARACTERS : generates
+	CHARACTER_CATALOGUE ||--|{ CATALOGUE : uses
+	
 ```
 
