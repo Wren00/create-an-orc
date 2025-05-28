@@ -103,9 +103,9 @@ CHARACTER_BODY_PART_IMAGE_TYPES {
 	id int PK
 	name string
 }
-MISC_IMAGES {
+BACKGROUND_IMAGES {
  	id int PK
-	name string
+	image_name string
 	url string
 }
 CHARACTER_CATALOGUE {
