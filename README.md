@@ -79,7 +79,9 @@ USERS {
 }
 PROMPTS {
  	id int PK
-	text string
+	personality_prompt string
+	appearance_prompt string
+	mentality_prompt string
 }
 CHARACTERS {
  	id int PK
