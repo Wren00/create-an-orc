@@ -50,7 +50,6 @@ creativity.
 erDiagram
 USERS ||--|{ CHARACTERS : owns
 USERS ||--|{ PROMPTS : creates
-CHARACTERS ||--|{ CATALOGUE : utilizes
 PROMPTS ||--|{ CHARACTERS : creates
 ```
 
@@ -75,17 +74,19 @@ USERS {
 	email_address string
 	user_password string
 	available_tokens int
+	admin_privileges boolean 
 	profile_id int
 }
 PROMPTS {
  	id int PK
 	text string
-	user_id int FK
 }
 CHARACTERS {
  	id int PK
 	name string
-	pronpt_id int FK
+	prompt_id_1 int FK
+	prompt_id_2 int FK
+	prompt_id_3 int FK
 	character_images_id int FK
 }
 CHARACTER_IMAGES {
@@ -115,12 +116,13 @@ CHARACTER_CATALOGUE {
 }
 CATALOGUE {
     id int PK
-    syllable string
+    syllables string
 }
 	USERS ||--|{ PROMPTS : creates
 	USERS ||--|{ CHARACTERS : owns
 	CHARACTERS ||--|{ PROMPTS : uses
 	CHARACTERS ||--|| CHARACTER_IMAGES : has
+	CHARACTERS ||--|| CATALOGUE : uses
 	CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : uses
 	CHARACTER_BODY_PART_IMAGES }|--|{ CHARACTER_BODY_PART_IMAGE_TYPES : uses
 	CHARACTER_CATALOGUE ||--|{ CHARACTERS : generates
