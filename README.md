@@ -103,6 +103,11 @@ CHARACTER_BODY_PART_IMAGE_TYPES {
 	id int PK
 	name string
 }
+MISC_IMAGES {
+ 	id int PK
+	name string
+	url string
+}
 CHARACTER_CATALOGUE {
 	id int PK
 	character_id int FK
