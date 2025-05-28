@@ -1,0 +1,6 @@
+node_modules
+# Keep environment variables out of version control
+database
+images
+.env
+.DS_Store
