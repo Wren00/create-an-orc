@@ -135,14 +135,16 @@ CATALOGUE {
 	
 ```
 
-## APIs
+# APIs
 
-### Users/
 
+## Users/
 
 ---
 
-### GET /users
+## Users GET requests
+
+## GET /users
 
 Description: Get all users.
 
@@ -192,6 +194,7 @@ Response Example
 ```
 
 ---
+## Users POST requests
 
 ### POST /users
 
@@ -225,6 +228,7 @@ Response Example:
 ```
 
 ---
+## Users PUT requests
 
 ### PUT users/{id}
 
@@ -258,6 +262,7 @@ Response Example:
 ```
 
 ---
+## Users DELETE requests
 
 ### DELETE users/{id}
 
@@ -279,9 +284,11 @@ Response codes:
 404 Not found
 
 
-### Characters
+## Characters
 
 ---
+
+## Characters GET requests
 
 ### GET /users/{id}/characters
 
@@ -333,6 +340,7 @@ Response Example
 ```
 
 ---
+## Characters POST requests
 
 ### POST /users/{id}/characters{id}
 
@@ -367,9 +375,13 @@ Response Example:
 
 ---
 
+## Characters PUT requests
+
 Once new objects are posted into the Characters database they shouldn't be updated or changed.
 
 ---
+
+## Characters DELETE requests
 
 ### DELETE users/{id}/characters/{id}
 
