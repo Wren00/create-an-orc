@@ -276,7 +276,7 @@ Request Example:
 Response codes:
 
 204 Resource deleted successfully\
-404 Not found\
+404 Not found
 
 
 ### Characters
@@ -324,10 +324,69 @@ Response codes:
 Response Example
 ```
   {
-    "id": 3,
-    "name": "testOrc3",
-    "prompts_collection_id": 3,
-    "character_images_id": 3,
+    "id": 1,
+    "name": "testOrc1",
+    "prompts_collection_id": 1,
+    "character_images_id": 1,
     "user_id": 1
   }
 ```
+
+---
+
+### POST /users/{id}/characters{id}
+
+Description: Saves a new character for a user.
+
+Request Example:
+```
+  {
+    "name": "testOrc3",
+    "prompts_collection_id": 3,
+    "character_images_id": 3,
+    "user_id": 3
+  },
+```
+
+Response codes:
+
+200 OK\
+201 Created\
+400 Bad Request
+
+Response Example:
+```
+{
+  "id": 3,
+  "name": "testOrc3",
+  "prompts_collection_id": 3,
+  "character_images_id": 3,
+  "user_id": 3
+}
+```
+
+---
+
+Once new objects are posted into the Characters database they shouldn't be updated or changed.
+
+---
+
+### DELETE users/{id}/characters/{id}
+
+Description: Delete a saved character from a user collection.
+
+Request Example:
+```
+{
+  "id": 1,
+  "name": "testOrc1",
+  "prompts_collection_id": 1,
+  "character_images_id": 1,
+  "user_id": 1
+}
+```
+
+Response codes:
+
+204 Resource deleted successfully\
+404 Not found
