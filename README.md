@@ -224,6 +224,8 @@ Response Example:
 }
 ```
 
+---
+
 ### PUT users/{id}
 
 Description: Update a single user account.
@@ -255,6 +257,8 @@ Response Example:
 }
 ```
 
+---
+
 ### DELETE users/{id}
 
 Description: Delete a single user account.
@@ -275,9 +279,8 @@ Response codes:
 404 Not found
 
 
-### Characters/
+### Characters
 
----
 
 ### GET /users/{id}/characters
 
