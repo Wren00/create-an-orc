@@ -147,7 +147,7 @@ Description: Get all users.
 
 Responses:
 
-200 OK
+200 OK\
 404 Not Found
 
 Response Example
@@ -176,7 +176,7 @@ Description: Get a single user by ID
 
 Responses:
 
-200 OK
+200 OK\
 404 Not Found
 
 Response Example
@@ -207,8 +207,9 @@ Request Example:
 ```
 Responses:
 
-201 Created
+201 Created\
 400 Bad Request
+
 Response Example:
 ```
 {
