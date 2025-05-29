@@ -140,7 +140,6 @@ CATALOGUE {
 
 ## Users/
 
----
 
 ## Users GET requests
 
@@ -286,8 +285,6 @@ Response codes:
 
 ## Characters
 
----
-
 ## Characters GET requests
 
 ### GET /users/{id}/characters
@@ -402,3 +399,5 @@ Response codes:
 
 204 Resource deleted successfully\
 404 Not found
+
+---
