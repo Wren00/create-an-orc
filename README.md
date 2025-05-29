@@ -139,7 +139,8 @@ CATALOGUE {
 
 ### Users
 
-GET /users
+
+### GET /users
 
 Description: Get all users.
 
@@ -168,7 +169,7 @@ Response Example
 ]
 ```
 
-GET /users/{id}
+### GET /users/{id}
 
 Description: Get a single user by ID
 
@@ -187,7 +188,8 @@ Response Example
     "profile_id": 1
   }
 ```
-POST /users
+
+### POST /users
 
 Description: Register an account for a new user.
 
