@@ -149,7 +149,7 @@ Responses:
 404 Not Found
 
 Response Example
-```mermaid
+```
 [
   {
     "id": 1,
@@ -178,7 +178,7 @@ Responses:
 404 Not Found
 
 Response Example
-```mermaid
+```
   {
     "id": 1,
     "user_name": "testadmin",
@@ -192,7 +192,7 @@ POST /users
 Description: Register an account for a new user.
 
 Request Example:
-```mermaid
+```
 {
   "user_name": "newUser",
   "email_address": "new_user@example.com,
@@ -205,7 +205,7 @@ Responses:
 201 Created
 400 Bad Request
 Response Example:
-```mermaid
+```
 {
   "id": 3,
   "user_name": "newUser",
