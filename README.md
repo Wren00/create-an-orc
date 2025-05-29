@@ -122,7 +122,7 @@ CATALOGUE {
     id int PK
     syllables string
 }
-	USERS ||--|{ PROMPTS : creates
+	USERS ||--|{ PROMPTS_COLLECTION : creates
 	USERS ||--|{ CHARACTERS : owns
 	CHARACTERS ||--|{ PROMPTS_COLLECTION : uses
 	CHARACTERS ||--|| CHARACTER_IMAGES : has
