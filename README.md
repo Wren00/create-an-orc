@@ -139,6 +139,7 @@ CATALOGUE {
 
 ### Users
 
+---
 
 ### GET /users
 
@@ -188,6 +189,8 @@ Response Example
     "profile_id": 1
   }
 ```
+
+---
 
 ### POST /users
 
