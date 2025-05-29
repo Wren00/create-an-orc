@@ -276,11 +276,12 @@ Request Example:
 Response codes:
 
 204 Resource deleted successfully\
-404 Not found
+404 Not found\
 
 
 ### Characters
 
+---
 
 ### GET /users/{id}/characters
 
