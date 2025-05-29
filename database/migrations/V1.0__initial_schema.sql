@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.users
     email_address text not null UNIQUE,
     user_password text not null,
     available_tokens int not null,
-    admin_privileges int not null,
+    admin_privileges bit not null,
     profile_id int not null
 );
 

@@ -1,9 +1,9 @@
 INSERT INTO users (user_name, email_address, user_password, available_tokens, admin_privileges, profile_id)
 VALUES
-    ('testadmin', 'loren.walsh@unosquare.com', 'adminorc', 30,
-     1, 1),
-    ('test', 'testaccount@gmail.com', 'test', 1,
-     0, 2);
+    ('testadmin', 'adminaccount@example.com', 'adminorc', 30,
+     cast(1 as bit), 1),
+    ('test', 'testaccount@example.com', 'securePassword', 1,
+     cast(0 as bit), 2);
 
 INSERT INTO background_images (image_name, url) VALUES
           ('background', 's3://create-an-orc-images/Misc Images/Background.png'),
