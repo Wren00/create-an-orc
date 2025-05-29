@@ -137,7 +137,8 @@ CATALOGUE {
 
 ## APIs
 
-### Users
+### Users/
+
 
 ---
 
@@ -145,7 +146,7 @@ CATALOGUE {
 
 Description: Get all users.
 
-Responses:
+Response codes:
 
 200 OK\
 404 Not Found
@@ -162,8 +163,8 @@ Response Example
   },
   {
     "id": 2,
-    "userName": "admin_user",
-    "email": "testaccount@example.com",
+    "user_name": "admin_user",
+    "email_address": "testaccount@example.com",
     "admin_privileges": 0,
     "profile_id": 2
   }
@@ -174,7 +175,7 @@ Response Example
 
 Description: Get a single user by ID
 
-Responses:
+Response codes:
 
 200 OK\
 404 Not Found
@@ -201,12 +202,14 @@ Request Example:
 {
   "user_name": "newUser",
   "email_address": "new_user@example.com,
-  "password": "encryptedPassword",
+  "user_password": "encryptedPassword",
   "admin_privileges": 0
 }
 ```
-Responses:
 
+Response codes:
+
+200 OK\
 201 Created\
 400 Bad Request
 
@@ -220,5 +223,107 @@ Response Example:
   "profile_id": 3
 }
 ```
-**Put**
-**Delete**
+
+### PUT users/{id}
+
+Description: Update a single user account.
+
+Request Example:
+```
+{
+  "user_name": "new_user",
+  "email_address": "updated_email@example.com",
+  "user_password": "newEncryptedPassword",
+  "admin_privileges": 0
+}
+```
+
+Response codes:
+
+200 OK\
+201 Created\
+400 Bad Request
+
+```
+Response Example:
+
+{
+  "id": 3,
+  "user_name": "updated_new_user",
+  "email_address": "updated_email@example.com",
+  "admin_privileges": 0
+}
+```
+
+### DELETE users/{id}
+
+Description: Delete a single user account.
+
+Request Example:
+```
+{
+  "user_name": "newUser",
+  "email_address": "new_user@example.com,
+  "user_password": "encryptedPassword",
+  "admin_privileges": 0
+}
+```
+
+Response codes:
+
+204 Resource deleted successfully\
+404 Not found
+
+
+### Characters/
+
+---
+
+### GET /users/{id}/characters
+
+Description: Get all characters saved to a user.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+[
+  {
+    "id": 1,
+    "name": "testOrc1",
+    "prompts_collection_id": 1,
+    "character_images_id": 1,
+    "user_id": 1
+  },
+  {
+    "id": 2,
+    "name": "testOrc2",
+    "prompts_collection_id": 2,
+    "character_images_id": 2,
+    "user_id": 1
+  }
+]
+```
+
+### GET /users/{id}/characters/{id}
+
+Description: Get a single character by ID saved by a user.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+  {
+    "id": 3,
+    "name": "testOrc3",
+    "prompts_collection_id": 3,
+    "character_images_id": 3,
+    "user_id": 1
+  }
+```
