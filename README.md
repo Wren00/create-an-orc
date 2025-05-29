@@ -53,7 +53,7 @@ USERS ||--|{ PROMPTS : creates
 PROMPTS ||--|{ CHARACTERS : creates
 ```
 
-### Dictionary
+## Dictionary
 - **User**: Any person accessing the website and viewing a randomised character
 - **Character**: The generated characters that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
 - **Prompt**: Randomised adjectives that will be provided in threes to the AI to generate a
@@ -135,3 +135,84 @@ CATALOGUE {
 	
 ```
 
+## APIs
+
+### Users
+
+GET /users
+
+Description: Get all users.
+
+Responses:
+
+200 OK
+404 Not Found
+
+Response Example
+```mermaid
+[
+  {
+    "id": 1,
+    "user_name": "testadmin",
+    "email_address": "adminaccount@example.com",
+    "admin_privileges": 1,
+    "profile_id": 1
+  },
+  {
+    "id": 2,
+    "userName": "admin_user",
+    "email": "testaccount@example.com",
+    "admin_privileges": 0,
+    "profile_id": 2
+  }
+]
+```
+
+GET /users/{id}
+
+Description: Get a single user by ID
+
+Responses:
+
+200 OK
+404 Not Found
+
+Response Example
+```mermaid
+  {
+    "id": 1,
+    "user_name": "testadmin",
+    "email_address": "adminaccount@example.com",
+    "admin_privileges": 1,
+    "profile_id": 1
+  }
+```
+POST /users
+
+Description: Register an account for a new user.
+
+Request Example:
+```mermaid
+{
+  "user_name": "newUser",
+  "email_address": "new_user@example.com,
+  "password": "encryptedPassword",
+  "admin_privileges": 0
+}
+```
+Responses:
+
+201 Created
+400 Bad Request
+Response Example:
+```mermaid
+{
+  "id": 3,
+  "user_name": "newUser",
+  "email_address": "new_user@example.com",
+  "admin_privileges": 0,
+  "profile_id": 3
+}
+```
+**Put**
+**Delete**
