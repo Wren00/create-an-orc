@@ -92,6 +92,7 @@ CHARACTERS {
 	name string
 	character_images_id int FK
 	prompts_collection_id int FK
+	user_id int FK
 }
 CHARACTER_IMAGES {
 	id int PK
