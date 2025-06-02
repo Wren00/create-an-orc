@@ -563,14 +563,20 @@ A user who registers an account so they can keep a record of Characters they hav
 They have a linkable profile, and linkable saved characters.
 
 
+
 ## User Journeys
 
 
-# New User registers account. 
+### New User registers account. 
 
 ```mermaid
-
 flowchart TD
  	A[User accesses webpage]  --> B[User creates account] --> C[User saves generated character]
+```
 
+### User wished to save and access Character. 
+
+```mermaid
+flowchart TD
+ 	A[User accesses webpage]  --> B{is User logged in?} --no--> C[User prompted to register] --yes--> C[User saves Character to User Library] 
 ```
