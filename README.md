@@ -62,7 +62,8 @@ character. For example an orc character may be:
   - Poor
   - Good
 - **Catalogue**: Syllables stored within the databases used for the purpose of character name generation and suplementing prompts with Retrieval Augemented Generation (RAG).
-- 
+
+---
 
 ## Entity Relationship Diagram
 ```mermaid
@@ -75,7 +76,10 @@ USERS {
 	user_password string
 	available_tokens int
 	admin_privileges boolean 
-	profile_id int
+	profile_id int FK
+}
+USER_PROFILE {
+	id int PK
 }
 PROMPTS {
  	id int PK
@@ -125,6 +129,7 @@ CATALOGUE {
 }
 	USERS ||--|{ PROMPTS_COLLECTION : creates
 	USERS ||--|{ CHARACTERS : owns
+	USERS ||--|| USER_PROFILE : owns
 	CHARACTERS ||--|{ PROMPTS_COLLECTION : uses
 	CHARACTERS ||--|| CHARACTER_IMAGES : has
 	CHARACTERS ||--|| CATALOGUE : uses
