@@ -578,5 +578,5 @@ flowchart TD
 
 ```mermaid
 flowchart TD
- 	A[User accesses webpage]  --> B{is User logged in?} --no--> C[User prompted to register] --yes--> C[User saves Character to User Library] 
+ 	A[User accesses webpage]  --> B{is User logged in?} --no--> C[User prompted to register] --yes--> D[User saves Character to User Library]
 ```
