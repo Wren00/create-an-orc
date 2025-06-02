@@ -282,6 +282,7 @@ Response codes:
 204 Resource deleted successfully\
 404 Not found
 
+---
 
 ## Characters
 
@@ -392,6 +393,132 @@ Request Example:
   "prompts_collection_id": 1,
   "character_images_id": 1,
   "user_id": 1
+}
+```
+
+Response codes:
+
+204 Resource deleted successfully\
+404 Not found
+
+---
+
+## Prompts GET requests
+
+## GET /prompts
+
+Description: Get all prompts.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+[
+  {
+    "id": 1,
+    "adjectives: "good"
+  },
+  {
+    "id": 2,
+    "adjectives" : "evil"
+  }
+]
+```
+
+## GET /prompts/{id}
+
+Description: Get a single prompt by id.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+  {
+    "id": 3,
+    "adjectives: "neutral"
+  }
+```
+---
+## Prompts POST requests
+
+### POST /prompts
+
+Description: Submit a new prompt to the database.
+
+Request Example:
+```
+{
+  "adjectives" : "happy"
+}
+```
+
+OR
+
+```
+[
+  {
+    "adjectives": "sad"
+  },
+  {
+    "adjectives": "angry"
+  }
+]
+```
+
+Response codes:
+
+200 OK\
+201 Created\
+400 Bad Request
+
+---
+## Prompts PUT requests
+
+### PUT prompts/{id}
+
+Description: Update a prompt by id.
+
+Request Example:
+```
+{
+  "id": 5,
+  "adjectives": "prompt_to_update"
+}
+```
+
+Response codes:
+
+200 OK\
+201 Created\
+400 Bad Request
+
+```
+Response Example:
+
+{
+  "id": 5",
+  "adjectives" : "prompt_to_update"
+}
+```
+
+---
+## Prompts DELETE requests
+
+### DELETE prompts/{id}
+
+Description: Delete a single prompt by id.
+
+Request Example:
+```
+{
+  "id": "6",
+  "adjectives" : "delete_this_prompt"
 }
 ```
 
