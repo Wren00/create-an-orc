@@ -1,3 +1,6 @@
+INSERT INTO user_profile (id)
+VALUES (1), (2);
+
 INSERT INTO users (user_name, email_address, user_password, available_tokens, admin_privileges, profile_id)
 VALUES
     ('testadmin', 'adminaccount@example.com', 'adminorc', 30,

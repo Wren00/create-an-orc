@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS public.user_profile
+(
+    id serial constraint user_profile_pk primary key
+);
+
 CREATE TABLE IF NOT EXISTS public.users
 (
     id serial constraint users_pk primary key,
@@ -6,7 +11,7 @@ CREATE TABLE IF NOT EXISTS public.users
     user_password text not null,
     available_tokens int not null,
     admin_privileges bit not null,
-    profile_id int not null
+    profile_id int constraint user_profile_fk references user_profile(id)
 );
 
 CREATE TABLE IF NOT EXISTS public.character_body_part_image_types
