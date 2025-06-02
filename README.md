@@ -169,7 +169,7 @@ Response Example
   },
   {
     "id": 2,
-    "user_name": "admin_user",
+    "user_name": "testuser",
     "email_address": "testaccount@example.com",
     "admin_privileges": 0,
     "profile_id": 2
@@ -195,6 +195,25 @@ Response Example
     "admin_privileges": 1,
     "profile_id": 1
   }
+```
+### GET /users/{profile_id}
+
+Description: Get a single users profile by ID.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+{
+    "id": 2,
+    "user_name": "testuser",
+    "email_address": "testaccount@example.com",
+    "admin_privileges": 0,
+    "profile_id": 2
+}
 ```
 
 ---
@@ -261,7 +280,8 @@ Response Example:
   "id": 3,
   "user_name": "updated_new_user",
   "email_address": "updated_email@example.com",
-  "admin_privileges": 0
+  "admin_privileges": 0,
+  "profile_id" : 3
 }
 ```
 
@@ -275,8 +295,8 @@ Description: Delete a single user account.
 Request Example:
 ```
 {
-  "user_name": "newUser",
-  "email_address": "new_user@example.com,
+  "user_name": "deletedUser",
+  "email_address": "deleted_user@example.com,
   "user_password": "encryptedPassword",
   "admin_privileges": 0
 }
