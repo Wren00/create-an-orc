@@ -566,7 +566,7 @@ They have a linkable profile, and linkable saved characters.
 ## User Journeys
 
 
-User accesses webpage and registers account. 
+# New User registers account. 
 
 ```mermaid
 
