@@ -574,9 +574,11 @@ flowchart TD
  	A[User accesses webpage]  --> B[User creates account] --> C[User saves generated character]
 ```
 
-### User wished to save and access Character. 
+### User wished to save a generated Character. 
 
 ```mermaid
 flowchart TD
- 	A[User accesses webpage]  --> B{is User logged in?} --no--> C[User prompted to register] --yes--> D[User saves Character to User Library]
+	A[User accesses webpage] --> B{Is user logged in?}
+	B -- Yes --> C[User saves character to User Library] --> E[End]
+	B -- No ----> D[User is prompted to register] --> B
 ```
