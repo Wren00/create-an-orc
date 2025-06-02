@@ -571,6 +571,6 @@ User accesses webpage and registers account.
 ```mermaid
 
 flowchart TD
- 	User accesses webpage  --> User creates account --> User saves generated character
+ 	A[User accesses webpage]  --> B[User creates account] --> C[User saves generated character]
 
 ```
