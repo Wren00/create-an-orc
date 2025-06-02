@@ -588,8 +588,9 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-	A[User is shown all Characters saved to their Library.] --> B[Is the Character in the Library?] B --yes --> C[Character can be selected and a link provided.]
-	B -- no --> D[User may have not saved the Character.] 
+	A[User accesses profile] --> B[User shown all Characters saved in Library.] --> C{Is Character present?}
+	C -- Yes --> D[User clicks on Character to get link to single character.]
+	C -- No ----> E[End] 
 ```
 
 
