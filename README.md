@@ -553,3 +553,24 @@ Response codes:
 404 Not found
 
 ---
+
+##User Personas
+
+#Unregistered User
+A casual user who navigates to the webpage and receives a randomly generated Character.
+#Registered User
+A user who registers an account so they can keep a record of Characters they have generated if they wish.
+They have a linkable profile, and linkable saved characters.
+
+
+## User Journeys
+
+
+User accesses webpage and registers account. 
+
+```mermaid
+
+flowchart TD
+    id[User access webpage] --> id[creates account] --> id[saves generated Character]
+
+```
