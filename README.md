@@ -235,8 +235,8 @@ Request Example:
 ```
 {
   "user_name": "new_user",
-  "email_address": "updated_email@example.com",
-  "user_password": "newEncryptedPassword",
+  "email_address": "email@example.com",
+  "user_password": "encryptedPassword",
   "admin_privileges": 0
 }
 ```
@@ -254,6 +254,7 @@ Response Example:
   "id": 3,
   "user_name": "updated_new_user",
   "email_address": "updated_email@example.com",
+  "user_password": "newEncryptedPassword",
   "admin_privileges": 0
 }
 ```
@@ -313,26 +314,6 @@ Response Example
     "user_id": 1
   }
 ]
-```
-
-### GET /users/{id}/characters/{id}
-
-Description: Get a single character by ID saved by a user.
-
-Response codes:
-
-200 OK\
-404 Not Found
-
-Response Example
-```
-  {
-    "id": 1,
-    "name": "testOrc1",
-    "prompts_collection_id": 1,
-    "character_images_id": 1,
-    "user_id": 1
-  }
 ```
 
 ---
@@ -546,8 +527,8 @@ A user registered as an admin who can make requests for the maintenance of site 
 
 ```mermaid
 flowchart TD
- 	A[User accesses homepage and receives first randomly generated
-.]  --> B[User selects top menu button to Register and creates account] --> C[User saves generated character]
+ 	A[User accesses homepage and receives first randomly generated Character.]  --> B[User selects top menu button to Register and creates account]
+	--> C[User saves generated character]
 ```
 
 ### User wishes to save a generated Character and mark for public availability. 
