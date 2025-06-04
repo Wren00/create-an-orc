@@ -546,7 +546,8 @@ A user registered as an admin who can make requests for the maintenance of site 
 
 ```mermaid
 flowchart TD
- 	A[User accesses homepage]  --> B[User selects menu button to Register and creates account] --> C[User saves generated character]
+ 	A[User accesses homepage and receives first randomly generated
+.]  --> B[User selects top menu button to Register and creates account] --> C[User saves generated character]
 ```
 
 ### User wishes to save a generated Character and mark for public availability. 
@@ -554,7 +555,7 @@ flowchart TD
 ```mermaid
 flowchart TD
 	A[User accesses homepage] --> B{Is user logged in?}
-	B -- Yes --> C[User saves character to User Library and selects availability status of Character] --> E[Character is saved to User Library.]
+	B -- Yes --> C[User saves character to User Library and selects that Character is public] --> E[Character is saved to User Library.]
 	B -- No ----> D[User is prompted to register] --> B
 ```
 
@@ -563,7 +564,7 @@ flowchart TD
 ```mermaid
 flowchart TD
 	A[User accesses homepage and selects their Library from the site User menu.] --> B[User is shown all Characters saved in Library.] --> C{Is Character present?}
-	C -- Yes --> D[User clicks on Character to get link.]
+	C -- Yes --> D[User clicks on Character to get link if character is publically available]
 	C -- No ----> E[User has not saved.] 
 ```
 
@@ -574,7 +575,7 @@ flowchart TD
 	A{Homepage logic determines whether User is an Admin}
 	A -- Yes --> B[Admin menu is displayed for user.]
 	A -- No --> C[Admin menu is not available.]
-	B --> D[Admin selects Prompt Management from menu.] --> E[Admin selects 'New Prompt' from memu. They are allowed to input a single word which will be one of 3 combined to create a prompt.] 
+	B --> D[Admin selects Prompt Management from menu.] --> E[Admin selects 'New Prompt' from menu. They are allowed to input a single word which will be one of 3 combined to create a prompt.] 
 ```
 
 
