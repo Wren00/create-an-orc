@@ -77,10 +77,6 @@ USERS {
 	user_password string
 	available_tokens int
 	admin_privileges boolean 
-	profile_id int FK
-}
-USER_PROFILE {
-	id int PK
 }
 PROMPTS {
  	id int PK
@@ -130,7 +126,6 @@ CATALOGUE {
 }
 	USERS ||--|{ PROMPTS_COLLECTION : creates
 	USERS ||--|{ CHARACTERS : owns
-	USERS ||--|| USER_PROFILE : owns
 	CHARACTERS ||--|{ PROMPTS_COLLECTION : uses
 	CHARACTERS ||--|| CHARACTER_IMAGES : has
 	CHARACTERS ||--|| CATALOGUE : uses
@@ -165,15 +160,13 @@ Response Example
     "id": 1,
     "user_name": "testadmin",
     "email_address": "adminaccount@example.com",
-    "admin_privileges": 1,
-    "profile_id": 1
+    "admin_privileges": 1
   },
   {
     "id": 2,
     "user_name": "testuser",
     "email_address": "testaccount@example.com",
-    "admin_privileges": 0,
-    "profile_id": 2
+    "admin_privileges": 0
   }
 ]
 ```
@@ -193,28 +186,8 @@ Response Example
     "id": 1,
     "user_name": "testadmin",
     "email_address": "adminaccount@example.com",
-    "admin_privileges": 1,
-    "profile_id": 1
+    "admin_privileges": 1
   }
-```
-### GET /users/{profile_id}
-
-Description: Get a single users profile by ID.
-
-Response codes:
-
-200 OK\
-404 Not Found
-
-Response Example
-```
-{
-    "id": 2,
-    "user_name": "testuser",
-    "email_address": "testaccount@example.com",
-    "admin_privileges": 0,
-    "profile_id": 2
-}
 ```
 
 ---
@@ -281,8 +254,7 @@ Response Example:
   "id": 3,
   "user_name": "updated_new_user",
   "email_address": "updated_email@example.com",
-  "admin_privileges": 0,
-  "profile_id" : 3
+  "admin_privileges": 0
 }
 ```
 
@@ -555,13 +527,15 @@ Response codes:
 
 ---
 
-##User Personas
+## User Personas
 
-#Unregistered User
+### Unregistered User
 A casual user who navigates to the webpage and receives a randomly generated Character.
-#Registered User
+### Registered User
 A user who registers an account so they can keep a record of Characters they have generated if they wish.
-They have a linkable profile, and linkable saved characters.
+They can link their characters assigned to public visibility, or assign them to be private.
+### Admin User
+A user registered as an admin who can make requests for the maintenance of site data.
 
 
 
@@ -572,15 +546,15 @@ They have a linkable profile, and linkable saved characters.
 
 ```mermaid
 flowchart TD
- 	A[User accesses webpage]  --> B[User creates account] --> C[User saves generated character]
+ 	A[User accesses homepage]  --> B[User selects menu button to Register and creates account] --> C[User saves generated character]
 ```
 
-### User wishes to save a generated Character. 
+### User wishes to save a generated Character and mark for public availability. 
 
 ```mermaid
 flowchart TD
-	A[User accesses webpage] --> B{Is user logged in?}
-	B -- Yes --> C[User saves character to User Library] --> E[Character is saved to User Library.]
+	A[User accesses homepage] --> B{Is user logged in?}
+	B -- Yes --> C[User saves character to User Library and selects availability status of Character] --> E[Character is saved to User Library.]
 	B -- No ----> D[User is prompted to register] --> B
 ```
 
@@ -588,9 +562,19 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-	A[User accesses profile] --> B[User shown all Characters saved in Library.] --> C{Is Character present?}
+	A[User accesses homepage and selects their Library from the site User menu.] --> B[User is shown all Characters saved in Library.] --> C{Is Character present?}
 	C -- Yes --> D[User clicks on Character to get link.]
 	C -- No ----> E[User has not saved.] 
+```
+
+### Admin User wishes to add a new Prompt to the Catalogue.
+
+```mermaid
+flowchart TD
+	A{Homepage logic determines whether User is an Admin}
+	A -- Yes --> B[Admin menu is displayed for user.]
+	A -- No --> C[Admin menu is not available.]
+	B --> D[Admin selects Prompt Management from menu.] --> E[Admin selects 'New Prompt' from memu. They are allowed to input a single word which will be one of 3 combined to create a prompt.] 
 ```
 
 
