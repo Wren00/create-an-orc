@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/create-an-orc.iml" filepath="$PROJECT_DIR$/.idea/create-an-orc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/create-an-orc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/create-an-orc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/create-an-orc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/create-an-orc.test.iml" />
     </modules>
   </component>
 </project>

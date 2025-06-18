@@ -1,11 +1,13 @@
 package org.example.createanorc.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 
 @Builder
 @Data
+@AllArgsConstructor
 public class Character {
 
     private int id;
@@ -14,14 +16,5 @@ public class Character {
     private int characterImageId;
     private int promptsCollectionId;
     private int userId;
-
-
-    public Character(int id, String name, String description, int characterImageId, int promptsCollectionId, int userId) {}
-
-    public int setId(int id) {
-        this.id = id;
-        return id;
-    }
-
 
 }

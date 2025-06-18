@@ -2,6 +2,8 @@ package org.example.createanorc.service;
 
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.List;
+import org.example.createanorc.models.Character;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -31,7 +33,7 @@ public class CharacterService {
         int id = this.counter.incrementAndGet();
         model.setId(id);
         this.characterModels.add(model);
-        return new Character(id, model.getName(), model.getDescription(), model.getCharacterImagesId(), model.getPromptsCollectionsId(), model.getUserId());
+        return new Character(id, model.getName(), model.getDescription(), model.getCharacterImageId(), model.getPromptsCollectionId(), model.getUserId());
     }
 
     public void characterDELETE(int userId, int id) throws IndexOutOfBoundsException {

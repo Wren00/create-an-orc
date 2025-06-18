@@ -2,6 +2,7 @@ package org.example.createanorc.controllers;
 
 import java.util.ArrayList;
 import lombok.Generated;
+import org.example.createanorc.models.Character;
 import org.example.createanorc.service.CharacterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
