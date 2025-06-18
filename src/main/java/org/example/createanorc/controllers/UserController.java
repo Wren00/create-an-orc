@@ -46,10 +46,10 @@ public class UserController {
         return this.userService.userPOST(model);
     }
 
-    @DeleteMapping({"/characters/{character_id}"})
+    @DeleteMapping({"/users/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void userDelete(@PathVariable(name = "character_id") int characterId) {
-        this.userService.userDELETE(characterId);
+    public void userDelete(@PathVariable(name = "id") int id) {
+        this.userService.userDELETE(id);
     }
 
     @Generated
