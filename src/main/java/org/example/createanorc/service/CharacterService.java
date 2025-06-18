@@ -12,22 +12,28 @@ public class CharacterService {
     private ArrayList<Character> characterModels = new ArrayList();
     private AtomicInteger counter = new AtomicInteger();
 
+    // GET functions
 
-    public ArrayList<Character> characterGETALL(int userId) {
+    public ArrayList<Character> characterGETALL() {
+        return this.characterModels;
+    }
+
+    public ArrayList<Character> characterGETBYUSERID(int userId) {
         ArrayList<Character> charactersByUser = new ArrayList();
 
-        for(Character character : this.characterModels) {
+        for (Character character : this.characterModels) {
             if (character.getUserId() == userId) {
                 charactersByUser.add(character);
             }
         }
-
         return charactersByUser;
     }
 
-    public Character characterGETBYID(int userId, int id) throws IndexOutOfBoundsException {
-        return (Character)this.characterModels.get(id - 1);
+    public Character characterGETBYID(int id) throws IndexOutOfBoundsException {
+        return this.characterModels.get(id - 1);
     }
+
+    // POST functions
 
     public Character characterPOST(Character model) {
         int id = this.counter.incrementAndGet();
@@ -36,7 +42,11 @@ public class CharacterService {
         return new Character(id, model.getName(), model.getDescription(), model.getCharacterImageId(), model.getPromptsCollectionId(), model.getUserId());
     }
 
-    public void characterDELETE(int userId, int id) throws IndexOutOfBoundsException {
-        this.characterModels.remove(id - 1);
+    // DELETE functions
+
+    public void characterDELETE(int id) throws IndexOutOfBoundsException {
+            Character deletedCharacter = this.characterGETBYID(id);
+
+            characterModels.remove(deletedCharacter);
     }
 }
