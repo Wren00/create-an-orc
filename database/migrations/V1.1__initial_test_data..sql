@@ -53,6 +53,3 @@ INSERT INTO prompts (adjectives) VALUES
              ('adventurous'), ('shy'), ('kind'), ('generous'), ('angry'),
              ('cruel'), ('cautious'), ('clever'), ('selfish'), ('sneaky'),
              ('reliable'), ('ugly'), ('honest'), ('weak'), ('lazy'), ('beautiful');
-
-
-
