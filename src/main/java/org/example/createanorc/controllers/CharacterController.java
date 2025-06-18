@@ -39,7 +39,7 @@ public class CharacterController {
     @PostMapping({"/users/{user_id}/characters"})
     @ResponseBody
     public Character characterPost(@RequestBody Character model, @PathVariable("user_id") int userId) {
-        return this.characterService.characterPOST(model);
+        return this.characterService.characterPOST(model, userId);
     }
 
     @DeleteMapping({"/characters/{character_id}"})
@@ -50,7 +50,6 @@ public class CharacterController {
 
     @Generated
     public CharacterController(final CharacterService characterService) {
-
         this.characterService = characterService;
     }
 }

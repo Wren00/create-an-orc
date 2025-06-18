@@ -2,7 +2,6 @@ package org.example.createanorc.service;
 
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
-import java.util.List;
 import org.example.createanorc.models.Character;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -35,9 +34,10 @@ public class CharacterService {
 
     // POST functions
 
-    public Character characterPOST(Character model) {
+    public Character characterPOST(Character model, int userId) {
         int id = this.counter.incrementAndGet();
         model.setId(id);
+        model.setUserId(userId);
         this.characterModels.add(model);
         return new Character(id, model.getName(), model.getDescription(), model.getCharacterImageId(), model.getPromptsCollectionId(), model.getUserId());
     }
