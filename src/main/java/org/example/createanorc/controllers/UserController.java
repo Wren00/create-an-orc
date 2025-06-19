@@ -24,13 +24,13 @@ public class UserController {
 
     @GetMapping({"/users/{id}"})
     @ResponseBody
-    public User userGETBYID(@PathVariable("id") int id) {
+    public User getUserById(@PathVariable("id") int id) {
         return this.userService.userGETBYID(id);
     }
 
     @PatchMapping({"/users/{id}"})
     @ResponseBody
-    public User userPATCH(@PathVariable("id") int id, @RequestBody JsonNode updates) throws JsonProcessingException {
+    public User updateUser(@PathVariable("id") int id, @RequestBody JsonNode updates) throws JsonProcessingException {
         return this.userService.userPATCH(id, updates);
     }
 

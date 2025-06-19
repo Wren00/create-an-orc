@@ -9,13 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import org.example.createanorc.models.User;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class UserService {
 
     private ArrayList<User> userModels = new ArrayList();
-    private AtomicInteger counter = new AtomicInteger();
     private final ObjectMapper mapper = new ObjectMapper();
 
     // GET functions
@@ -24,21 +22,23 @@ public class UserService {
         return this.userModels;
     }
 
-    public User userGETBYID(int userId) {
+    public User userGETBYID(int userId) throws IndexOutOfBoundsException{
        return userModels.get(userId);
     }
 
     // POST functions
 
     public User userPOST(User model) {
-        int id = this.counter.incrementAndGet();
-        model.setId(id);
+        int newId = userModels.size() + 1;
+        model.setId(newId);
         model.setUserPassword(encryptPassword(model.getUserPassword()));
         this.userModels.add(model);
-        return new User(id, model.getUserName(), model.getEmailAddress(), model.getUserPassword(), model.getAvailableTokens(), model.isAdmin());
+        return new User(newId, model.getUserName(), model.getEmailAddress(), model.getUserPassword(), model.getAvailableTokens(), model.isAdmin());
     }
 
     // PATCH functions
+
+    // PATCH needs to accept and change only specified values in stored memory.
 
     @Transactional
     public User userPATCH(int id, JsonNode updates) throws JsonProcessingException {
@@ -77,7 +77,7 @@ public class UserService {
         userModels.remove(deletedUser);
     }
 
-    // password encryption
+    // Password encryption
 
     public String encryptPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
