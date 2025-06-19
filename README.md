@@ -17,12 +17,12 @@ favourite random prompts.
 
 ## Who is it for?
 This project is designed to provide a creative prompt for writers/artists/ttrpg players or anyone seeking a
-prompt to form an idea for a fantasy character.
+prompt to form an idea for a fantasy character. In this case, characters are also referred to as Orcs in the system.
 
 ## MOSCOW analysis
 
 ### Must have
-- A pixel art image of the randomised character. This has been created through:
+- A pixel art image of the randomised orc. This has been created through:
   - A shadow base 
   - A face with skin colour 
   - Upper torso clothes 
@@ -31,7 +31,7 @@ prompt to form an idea for a fantasy character.
 - A randomised name which has been built out of syllables provided in a JSON file.
 - A randomised description created via prompts to Open AI. The prompts should have randomised values each time it is sent
 through to the AI. The AI generates the description which will be sent back and displayed.
-- Randomised Stats for the character
+- Randomised Stats for the character.
 ### Should have
 - User accounts where a user can save instances of characters that they wish to keep record of. 
 - Rate limiting to prevent an overload of AI requests. 
@@ -42,26 +42,26 @@ will need to be added as separate updates.
 - Users can share their favourite creations with other users. 
 ### Won't have
 - A full gameified character sheet for ttrpg players as this would be too complex. 
-- A massively expanded description of the character as this is just meant to be a simple prompt to inspire user
+- A massively expanded description of the orc as this is just meant to be a simple prompt to inspire user
 creativity. 
 
 ## Domain Model Diagram
 ```mermaid
 erDiagram
-USERS ||--|{ CHARACTERS : owns
+USERS ||--|{ ORCS : owns
 USERS ||--|{ PROMPTS : creates
-PROMPTS ||--|{ CHARACTERS : creates
+PROMPTS ||--|{ ORCS : creates
 ```
 
 ## Dictionary
 - **User**: Any person accessing the website and viewing a randomised character
-- **Character**: The generated characters that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
+- **Orc**: The user generated character that are returned via the randomiser code and the AI. Initially this is just for Orcs as a race.
 - **Prompt**: Randomised adjectives that will be provided in threes to the AI to generate a
-character. For example an orc character may be:
+character. For example an orc may be:
   - Adventurous
   - Poor
   - Good
-- **Catalogue**: Syllables stored within the databases used for the purpose of character name generation and suplementing prompts with Retrieval Augemented Generation (RAG).
+- **Catalogue**: Syllables stored within the databases used for the purpose of orc name generation and supplementing prompts with Retrieval Augemented Generation (RAG).
 
 ---
 
@@ -87,25 +87,25 @@ PROMPTS_COLLECTION {
 	prompt2 int FK
 	prompt3 int FK
 }
-CHARACTERS {
+ORCS {
  	id int PK
 	name string
-	character_images_id int FK
+	orc_images_id int FK
 	prompts_collection_id int FK
 	user_id int FK
 }
-CHARACTER_IMAGES {
+ORC_IMAGES {
 	id int PK
 	head int FK
 	torso int FK
 	legs int FK
 }
-CHARACTER_BODY_PART_IMAGES {
+ORC_BODY_PART_IMAGES {
 	id int
 	url text 
-	character_body_part_type_id int FK
+	orc_body_part_type_id int FK
 }
-CHARACTER_BODY_PART_IMAGE_TYPES {
+ORC_BODY_PART_IMAGE_TYPES {
 	id int PK
 	name string
 }
@@ -114,9 +114,9 @@ BACKGROUND_IMAGES {
 	image_name string
 	url string
 }
-CHARACTER_CATALOGUE {
+ORC_CATALOGUE {
 	id int PK
-	character_id int FK
+	orc_id int FK
 	catalogue_id int FK
 }
 CATALOGUE {
@@ -124,13 +124,13 @@ CATALOGUE {
     syllables string
 }
 	USERS ||--|{ PROMPTS_COLLECTION : creates
-	USERS ||--|{ CHARACTERS : owns
-	CHARACTERS ||--|{ PROMPTS_COLLECTION : uses
-	CHARACTERS ||--|| CHARACTER_IMAGES : has
-	CHARACTERS ||--|| CATALOGUE : uses
-	CHARACTER_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : uses
-	CHARACTER_BODY_PART_IMAGES }|--|{ CHARACTER_BODY_PART_IMAGE_TYPES : uses
-	CHARACTER_CATALOGUE ||--|{ CHARACTERS : generates
+	USERS ||--|{ ORCS : owns
+	ORCS ||--|{ PROMPTS_COLLECTION : uses
+	ORCS ||--|| CHARACTER_IMAGES : has
+	ORCS ||--|| CATALOGUE : uses
+	ORC_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : uses
+	ORC_BODY_PART_IMAGES }|--|{ CHARACTER_BODY_PART_IMAGE_TYPES : uses
+	ORC_CATALOGUE ||--|{ CHARACTERS : generates
 	PROMPTS_COLLECTION ||--|{ PROMPTS : uses
 	
 ```
@@ -138,7 +138,7 @@ CATALOGUE {
 # APIs
 
 
-## Users/
+## Users
 
 
 ## Users GET requests
@@ -275,13 +275,14 @@ Response codes:
 
 ---
 
-## Characters
+## Orcs
 
-## Characters GET requests
 
-### GET /users/{id}/characters
+## Orcs GET requests
 
-Description: Get all characters saved to a user.
+### GET "/orcs"
+
+Description: Get all created Orcs saved in the database.
 
 Response codes:
 
@@ -295,32 +296,91 @@ Response Example
     "id": 1,
     "name": "testOrc1",
     "prompts_collection_id": 1,
-    "character_images_id": 1,
+    "orc_images_id": 1,
+    "user_id": 1
+  },
+    {
+    "id": 2,
+    "name": "testOrc2",
+    "prompts_collection_id": 2,
+    "orc_images_id": 2,
+    "user_id": 1
+  },
+    {
+    "id": 3,
+    "name": "testOrc3",
+    "prompts_collection_id": 3,
+    "orc_images_id": 3,
+    "user_id": 2
+  },
+]
+```
+
+### GET "/users/{user_id}/orcs"
+
+Description: Get all Orcs saved to a user.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+[
+  {
+    "id": 1,
+    "name": "testOrc1",
+    "prompts_collection_id": 1,
+    "orc_images_id": 1,
     "user_id": 1
   },
   {
     "id": 2,
     "name": "testOrc2",
     "prompts_collection_id": 2,
-    "character_images_id": 2,
+    "orc_images_id": 2,
+    "user_id": 1
+  }
+]
+```
+
+
+### GET "/orcs/{id}"
+
+Description: Get an Orc by the id.
+
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+[
+  {
+    "id": 1,
+    "name": "testOrc1",
+    "prompts_collection_id": 1,
+    "orc_images_id": 1,
     "user_id": 1
   }
 ]
 ```
 
 ---
-## Characters POST requests
+## Orcs POST requests
 
-### POST /users/{id}/characters{id}
+### POST /users/{user_id}/orcs
 
-Description: Saves a new character for a user.
+Description: Saves a new Orc for a user.
 
 Request Example:
 ```
   {
     "name": "testOrc3",
     "prompts_collection_id": 3,
-    "character_images_id": 3,
+    "orc_images_id": 3,
     "user_id": 3
   },
 ```
@@ -337,24 +397,24 @@ Response Example:
   "id": 3,
   "name": "testOrc3",
   "prompts_collection_id": 3,
-  "character_images_id": 3,
+  "orc_images_id": 3,
   "user_id": 3
 }
 ```
 
 ---
 
-## Characters PUT requests
+## Orcs PUT requests
 
-Once new objects are posted into the Characters database they shouldn't be updated or changed.
+Once new objects are posted into the Orcs database they shouldn't be updated or changed.
 
 ---
 
-## Characters DELETE requests
+## Orcs DELETE requests
 
-### DELETE users/{id}/characters/{id}
+### DELETE /orcs/{orc_id}
 
-Description: Delete a saved character from a user collection.
+Description: Delete a saved Orc from a user collection.
 
 Request Example:
 ```
@@ -362,7 +422,7 @@ Request Example:
   "id": 1,
   "name": "testOrc1",
   "prompts_collection_id": 1,
-  "character_images_id": 1,
+  "orc_images_id": 1,
   "user_id": 1
 }
 ```

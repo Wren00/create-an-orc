@@ -27,7 +27,6 @@ class OrcControllerTest {
     void retrieveAllCharacters_whenCalled_returnsCharacterModels() {
         // arrange
         var orcModels = new ArrayList<Orc>();
-        orcModels.add(new Orc(1, "Ork", "a test orc", 1,1,1));
 
         when(orcService.orcsGETALL()).thenReturn(orcModels);
 
