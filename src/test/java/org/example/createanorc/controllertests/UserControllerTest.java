@@ -1,4 +1,4 @@
-package org.example.createanorc.usertests;
+package org.example.createanorc.controllertests;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class UserControllerTests {
+class UserControllerTest {
 
     @MockitoBean
     UserService userService;
@@ -36,7 +36,7 @@ class UserControllerTests {
         var userModels = new ArrayList<User>();
         when(userService.userGETALL()).thenReturn(userModels);
 
-        // act
+        //act
         var results = controller.retrieveAllUsers();
 
         // assert
