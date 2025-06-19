@@ -177,11 +177,10 @@ class UserControllerTest {
     }
 
 
-
     //POST tests
 
     @Test
-    void helloPost_whenValidDataIsSubmitted_returnsUser() {
+    void userPost_whenValidDataIsSubmitted_returnsUser() {
 
         var newUser = User.builder()
                 .userName("a new user")

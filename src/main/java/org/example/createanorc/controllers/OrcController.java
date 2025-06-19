@@ -44,7 +44,7 @@ public class OrcController {
 
     @DeleteMapping({"/orcs/{orc_id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void orcrDelete(@PathVariable(name = "orc_id") int orcId) {
+    public void orcDelete(@PathVariable(name = "orc_id") int orcId) {
        this.orcService.orcDELETE(orcId);
     }
 
