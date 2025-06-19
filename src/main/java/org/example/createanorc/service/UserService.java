@@ -3,6 +3,8 @@ package org.example.createanorc.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
+import lombok.Setter;
 import org.example.createanorc.utils.UserUtils;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
 
+    @Getter
+    @Setter
     private ArrayList<User> userModels = new ArrayList();
+
     private final ObjectMapper mapper = new ObjectMapper();
 
     // GET functions
@@ -77,10 +82,11 @@ public class UserService {
         userModels.remove(deletedUser);
     }
 
-    // Password encryption
+    // Password encryption when POSTing a new user
 
     public String encryptPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
+
 }
 

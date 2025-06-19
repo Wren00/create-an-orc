@@ -1,5 +1,7 @@
 package org.example.createanorc.usertests;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.createanorc.controllers.UserController;
 import org.example.createanorc.models.User;
 import org.example.createanorc.service.UserService;
@@ -7,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,9 @@ class UserControllerTests {
 
     @Autowired
     private UserController controller;
+    @Autowired
+    private ObjectMapper objectMapper;
+
 
     // GET tests
 
@@ -71,7 +77,105 @@ class UserControllerTests {
         });
     }
 
-    // PUT tests (this needs a JSONNode object so needs more work)
+    // PUT tests
+
+    // test for a basic userName change.
+
+    @Test
+    void updateUser_whenOneValueUpdated_returnsPatchedUser() throws JsonProcessingException {
+
+        int userId = 1;
+
+        String patchJson = """
+            {
+              "userName": "updatedName"
+            }
+        """;
+        JsonNode updates = objectMapper.readTree(patchJson);
+
+        User patchedUser = new User();
+        patchedUser.setId(userId);
+        patchedUser.setUserName("updatedName");
+
+        when(userService.userPATCH(userId, updates))
+                .thenReturn(patchedUser);
+
+        User result = controller.updateUser(userId, updates);
+
+        assertNotNull(result);
+        assertEquals("updatedName", result.getUserName());
+
+        verify(userService, times(1)).userPATCH(userId, updates);
+    }
+
+    // test for multiple values. userName change but also marking isAdmin as true.
+
+    @Test
+    void updateUser_whenMultipleValuesUpdated_returnsPatchedUser() throws JsonProcessingException {
+
+        int userId = 1;
+
+        String patchJson = """
+            {
+              "userName": "newAdminUser",
+              "isAdmin": true
+            }
+        """;
+        JsonNode updates = objectMapper.readTree(patchJson);
+
+        User patchedUser = new User();
+        patchedUser.setId(userId);
+        patchedUser.setUserName("updatedName");
+        patchedUser.setAdmin(true);
+
+
+        when(userService.userPATCH(userId, updates))
+                .thenReturn(patchedUser);
+
+        User result = controller.updateUser(userId, updates);
+
+        assertNotNull(result);
+        assertEquals("updatedName", result.getUserName());
+        assertTrue(result.isAdmin());
+
+        verify(userService, times(1)).userPATCH(userId, updates);
+    }
+
+    // test for invalid data JSONProcessingException
+
+    @Test
+    void updateUser_whenUserServiceThrowsJsonProcessingException_throwsException() throws JsonProcessingException {
+
+        int userId = 1;
+        String patchJson = """
+            {
+              "userName": "invalid!"
+            }
+        """;
+
+        JsonNode patchNode = objectMapper.readTree(patchJson);
+
+        // throw JsonProcessingException from service
+        when(userService.userPATCH(userId, patchNode))
+                .thenThrow(new JsonProcessingException("Mocked JSON error") {});
+
+        assertThrows(JsonProcessingException.class, () -> {
+            controller.updateUser(userId, patchNode);
+        });
+
+        verify(userService).userPATCH(userId, patchNode);
+    }
+
+    @Test
+    void updateUser_whenCalledWithNotValidId_throwsException() {
+        var id = 100;
+        doThrow(new IndexOutOfBoundsException("Bad ID")).when(userService).userDELETE(id);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            userService.userDELETE(id);
+        });
+    }
+
 
 
     //POST tests
