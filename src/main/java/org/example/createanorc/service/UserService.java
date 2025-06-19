@@ -42,16 +42,31 @@ public class UserService {
 
     @Transactional
     public User userPATCH(int id, JsonNode updates) throws JsonProcessingException {
-        User user = userModels.get(id);
+        int databaseId = id - 1;
+        User user = userModels.get(databaseId);
 
         UserUtils userUtils = new UserUtils();
 
-        // Convert entity to JsonNode -> merge -> back to entity
+
+        // Convert entity to JsonNode -> merge -> map back to entity
+
         JsonNode existing = mapper.valueToTree(user);
         JsonNode merged   = userUtils.merge(existing, updates);
         User patched      = mapper.treeToValue(merged, User.class);
 
-        return userModels.set(id, patched);
+        // Check if userPassword was part of the users update to encrypt
+
+        if (updates.has("userPassword")) {
+            String rawPassword = patched.getUserPassword();
+            String encryptedPassword = encryptPassword(rawPassword);
+            patched.setUserPassword(encryptedPassword);
+        }
+
+        // Updates to a new hash everytime even if value wasn't actually changed!
+
+        userModels.set(databaseId, patched);
+
+        return userModels.get(databaseId);
     }
 
     // DELETE functions
