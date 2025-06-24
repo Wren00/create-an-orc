@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.createanorc.repository.UserRepository;
 import org.example.createanorc.utils.UserUtils;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -18,18 +19,36 @@ public class UserService {
     @Getter
     @Setter
     private ArrayList<User> userModels = new ArrayList();
+    private final UserRepository userRepository;
 
     private final ObjectMapper mapper = new ObjectMapper();
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     // GET functions
 
     public ArrayList<User> userGETALL() {
-        return this.userModels;
+        return userRepository.findAll();
     }
 
     public User userGETBYID(int userId) throws IndexOutOfBoundsException{
-       return userModels.get(userId);
+       return userRepository.getById(userId);
     }
+
+    public User userGETBYNAME(String userName) throws IllegalArgumentException {
+        return userRepository.getByUserName(userName);
+    }
+
+    public ArrayList<User> userGETISADMIN(Boolean isAdmin) {
+        if (isAdmin == false) {
+            return userRepository.findAll();
+        } else {
+            return userRepository.findByIsAdmin(true);
+        }
+    }
+
 
     // POST functions
 

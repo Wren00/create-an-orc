@@ -8,24 +8,31 @@ import lombok.Generated;
 import org.example.createanorc.models.User;
 import org.example.createanorc.service.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 public class UserController {
     private final UserService userService;
 
-    @GetMapping({"/users"})
+    //GET with uri filtering for retrieving admin true or false
+
+    @GetMapping("/users")
     @ResponseBody
-    public ArrayList<User> retrieveAllUsers() {
-        return this.userService.userGETALL();
+    public ArrayList<User> retrieveAllUsers(@RequestParam(required = false) Boolean isAdmin) {
+        return userService.userGETISADMIN(isAdmin);
     }
 
     @GetMapping({"/users/{id}"})
     @ResponseBody
     public User getUserById(@PathVariable("id") int id) {
         return this.userService.userGETBYID(id);
+    }
+
+    @GetMapping({"/users/{userName}"})
+    @ResponseBody
+    public User getUserByName(@PathVariable("userName") String userName) {
+        return this.userService.userGETBYNAME(userName);
     }
 
     @PatchMapping({"/users/{id}"})

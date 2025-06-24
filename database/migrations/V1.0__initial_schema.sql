@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS public.users
     email_address text not null UNIQUE,
     user_password text not null,
     available_tokens int not null,
-    admin_privileges bit not null,
+    is_admin boolean NOT NULL,
     profile_id int constraint user_profile_fk references user_profile(id)
 );
 
