@@ -1,22 +1,28 @@
 package org.example.createanorc.models;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Builder
+@Entity
+@Table(name = "orcs")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Orc {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private String description;
-    private int orcImageId;
-    private int promptsCollectionId;
-    private int userId;
+    private Long orcImagesId;
+    private Long promptsCollectionId;
+    private Long userId;
 
 }

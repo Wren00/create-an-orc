@@ -1,5 +1,6 @@
 package org.example.createanorc.service;
 
+import org.example.createanorc.repository.OrcRepository;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import org.example.createanorc.models.Orc;
@@ -7,44 +8,39 @@ import org.example.createanorc.models.Orc;
 
 @Service
 public class OrcService {
-    private ArrayList<Orc> orcModels = new ArrayList();
+
+    private final OrcRepository orcRepository;
 
     // GET functions
 
     public ArrayList<Orc> orcsGETALL() {
-        return this.orcModels;
+        return orcRepository.findAll();
     }
 
-    public ArrayList<Orc> orcsGETBYUSERID(int userId) {
-        ArrayList<Orc> orcsByUser = new ArrayList();
-
-        for (Orc orc : this.orcModels) {
-            if (orc.getUserId() == userId) {
-                orcsByUser.add(orc);
-            }
-        }
-        return orcsByUser;
+    public Orc orcGETBYID(Long id) throws IndexOutOfBoundsException {
+        return orcRepository.getById(id);
     }
 
-    public Orc orcGETBYID(int id) throws IndexOutOfBoundsException {
-        return this.orcModels.get(id - 1);
+
+    public ArrayList<Orc> orcsGETBYUSERID(Long userId) {
+        return orcRepository.getOrcsByUserId(userId);
     }
 
     // POST functions
 
-    public Orc orcPOST(Orc model, int userId) {
-        int newId = orcModels.size() + 1;
-        model.setId(newId);
-        model.setUserId(userId);
-        this.orcModels.add(model);
-        return new Orc(newId, model.getName(), model.getDescription(), model.getOrcImageId(), model.getPromptsCollectionId(), model.getUserId());
-    }
+    public Orc orcPOST(Orc newOrc, Long userId) {
+        newOrc.setUserId(userId);
+        return orcRepository.save(newOrc);
+        }
 
     // DELETE functions
 
-    public void orcDELETE(int id) throws IndexOutOfBoundsException {
-            Orc deletedOrc = this.orcGETBYID(id);
-
-            orcModels.remove(deletedOrc);
+    public void orcDELETE(Long id) throws IndexOutOfBoundsException {
+            orcRepository.deleteById(id);
     }
+
+    public OrcService(OrcRepository orcRepository) {
+        this.orcRepository = orcRepository;
+    }
+
 }

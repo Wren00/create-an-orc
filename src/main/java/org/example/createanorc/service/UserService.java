@@ -80,7 +80,6 @@ public class UserService {
     // DELETE functions
 
     public void userDELETE(Long id) throws IndexOutOfBoundsException {
-
         userRepository.deleteById(id);
     }
 

@@ -19,25 +19,25 @@ public class OrcController {
 
     @GetMapping({"/users/{user_id}/orcs"})
     @ResponseBody
-    public ArrayList<Orc> orcsByUserId(@PathVariable("user_id") int userId) {
+    public ArrayList<Orc> orcsByUserId(@PathVariable("user_id") Long userId) {
         return this.orcService.orcsGETBYUSERID(userId);
     }
 
     @GetMapping({"/orcs/{id}"})
     @ResponseBody
-    public Orc orcByID(@PathVariable("id") int id) {
+    public Orc orcByID(@PathVariable("id") Long id) {
         return this.orcService.orcGETBYID(id);
     }
 
     @PostMapping({"/users/{user_id}/orcs"})
     @ResponseBody
-    public Orc orcPost(@RequestBody Orc model, @PathVariable("user_id") int userId) {
+    public Orc orcPost(@RequestBody Orc model, @PathVariable("user_id") Long userId) {
         return this.orcService.orcPOST(model, userId);
     }
 
     @DeleteMapping({"/orcs/{orc_id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void orcDelete(@PathVariable(name = "orc_id") int orcId) {
+    public void orcDelete(@PathVariable(name = "orc_id") Long orcId) {
        this.orcService.orcDELETE(orcId);
     }
 
