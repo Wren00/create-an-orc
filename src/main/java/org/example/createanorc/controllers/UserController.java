@@ -1,13 +1,14 @@
 package org.example.createanorc.controllers;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Generated;
 import org.example.createanorc.models.User;
+import org.example.createanorc.models.UserPatchDTO;
 import org.example.createanorc.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,16 +28,8 @@ public class UserController {
 
     @GetMapping({"/users/{id}"})
     @ResponseBody
-    public User getUserById(@PathVariable("id") int id) {
+    public User getUserById(@PathVariable("id") Long id) {
         return this.userService.userGETBYID(id);
-    }
-
-
-
-    @PatchMapping({"/users/{id}"})
-    @ResponseBody
-    public User updateUser(@PathVariable("id") int id, @RequestBody JsonNode updates) throws JsonProcessingException {
-        return this.userService.userPATCH(id, updates);
     }
 
     @PostMapping({"/users"})
@@ -45,9 +38,22 @@ public class UserController {
         return this.userService.userPOST(model);
     }
 
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<User> patchUser(
+            @PathVariable Long id,
+            @RequestBody UserPatchDTO patch
+    ) {
+        try {
+            User updatedUser = userService.userPATCH(id, patch);
+            return ResponseEntity.ok(updatedUser);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping({"/users/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void userDelete(@PathVariable(name = "id") int id) {
+    public void userDelete(@PathVariable(name = "id") Long id) {
         this.userService.userDELETE(id);
     }
 

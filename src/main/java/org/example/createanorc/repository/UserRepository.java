@@ -9,13 +9,13 @@ import java.util.ArrayList;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User getById(int id);
+    User getById(Long id);
 
     ArrayList<User> findByUserNameContainingIgnoreCase(String userName);
 
-    ArrayList<User> findByIsAdminAndUserNameContainingIgnoreCase(boolean isAdmin, String userName);
+    ArrayList<User> findByAdminAndUserNameContainingIgnoreCase(boolean admin, String userName);
 
-    ArrayList<User> findByIsAdmin(boolean isAdmin);
+    ArrayList<User> findByAdmin(boolean admin);
 
     ArrayList<User> findAll();
 }

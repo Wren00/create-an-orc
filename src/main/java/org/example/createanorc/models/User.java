@@ -1,29 +1,31 @@
 package org.example.createanorc.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Builder
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Builder
 public class User {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String userName;
     private String emailAddress;
     private String userPassword;
     private int availableTokens;
-    private boolean isAdmin;
 
+    @Column(name = "is_admin")
+    @JsonProperty("isAdmin")
+    private boolean admin;
 }
 
 
