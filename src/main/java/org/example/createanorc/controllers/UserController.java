@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    //GET with uri filtering for retrieving admin true or false
+    //GET with uri filtering for multiple arguments
 
-    @GetMapping("/users")
-    @ResponseBody
-    public ArrayList<User> retrieveAllUsers(@RequestParam(required = false) Boolean isAdmin) {
-        return userService.userGETISADMIN(isAdmin);
+    @GetMapping({"/users"})
+    public ArrayList<User> retrieveUsers(
+            @RequestParam(required = false) String userName,
+            @RequestParam(required = false) Boolean isAdmin
+    ) {
+        return userService.getUsersFiltered(isAdmin, userName);
     }
 
     @GetMapping({"/users/{id}"})
@@ -29,11 +31,7 @@ public class UserController {
         return this.userService.userGETBYID(id);
     }
 
-    @GetMapping({"/users/{userName}"})
-    @ResponseBody
-    public User getUserByName(@PathVariable("userName") String userName) {
-        return this.userService.userGETBYNAME(userName);
-    }
+
 
     @PatchMapping({"/users/{id}"})
     @ResponseBody

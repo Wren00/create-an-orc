@@ -11,7 +11,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User getById(int id);
 
-    User getByUserName(String userName);
+    ArrayList<User> findByUserNameContainingIgnoreCase(String userName);
+
+    ArrayList<User> findByIsAdminAndUserNameContainingIgnoreCase(boolean isAdmin, String userName);
 
     ArrayList<User> findByIsAdmin(boolean isAdmin);
 

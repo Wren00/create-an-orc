@@ -29,26 +29,23 @@ public class UserService {
 
     // GET functions
 
-    public ArrayList<User> userGETALL() {
-        return userRepository.findAll();
-    }
+    // GET ALL with parameter arguments
 
-    public User userGETBYID(int userId) throws IndexOutOfBoundsException{
-       return userRepository.getById(userId);
-    }
-
-    public User userGETBYNAME(String userName) throws IllegalArgumentException {
-        return userRepository.getByUserName(userName);
-    }
-
-    public ArrayList<User> userGETISADMIN(Boolean isAdmin) {
-        if (isAdmin == false) {
-            return userRepository.findAll();
+    public ArrayList<User> getUsersFiltered(Boolean isAdmin, String userName) {
+        if (isAdmin != null && userName != null) {
+            return userRepository.findByIsAdminAndUserNameContainingIgnoreCase(isAdmin, userName);
+        } else if (isAdmin != null) {
+            return userRepository.findByIsAdmin(isAdmin);
+        } else if (userName != null) {
+            return userRepository.findByUserNameContainingIgnoreCase(userName);
         } else {
-            return userRepository.findByIsAdmin(true);
+            return userRepository.findAll();
         }
     }
 
+    public User userGETBYID(int userId) throws IndexOutOfBoundsException{
+        return userRepository.getById(userId);
+    }
 
     // POST functions
 
