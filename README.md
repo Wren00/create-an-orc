@@ -100,14 +100,17 @@ ORC_IMAGES {
 	torso int FK
 	legs int FK
 }
-ORC_BODY_PART_IMAGES {
+ORC_HEAD {
 	id int
 	url text 
-	orc_body_part_type_id int FK
 }
-ORC_BODY_PART_IMAGE_TYPES {
-	id int PK
-	name string
+ORC_TORSO {
+	id int
+	url text 
+}
+ORC_LEGS {
+	id int
+	url text 
 }
 BACKGROUND_IMAGES {
  	id int PK
