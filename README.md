@@ -403,7 +403,7 @@ Response Example
 ---
 ## Orcs POST requests
 
-### POST /users/{user_id}/orcs
+### POST /orcs
 
 Description: Saves a new Orc for a user.
 
@@ -444,7 +444,7 @@ Once new objects are posted into the Orcs database they shouldn't be updated or 
 
 ## Orcs DELETE requests
 
-### DELETE /orcs/{orc_id}
+### DELETE /{id}
 
 Description: Delete a saved Orc from a user collection.
 
@@ -482,11 +482,11 @@ Response Example
 [
   {
     "id": 1,
-    "adjectives: "good"
+    "content": "good"
   },
   {
     "id": 2,
-    "adjectives" : "evil"
+    "content": "evil"
   }
 ]
 ```
@@ -504,7 +504,7 @@ Response Example
 ```
   {
     "id": 3,
-    "adjectives: "neutral"
+    "content": "neutral"
   }
 ```
 ---
@@ -517,7 +517,7 @@ Description: Submit a new prompt to the database.
 Request Example:
 ```
 {
-  "adjectives" : "happy"
+  "content": "happy"
 }
 ```
 
@@ -526,10 +526,10 @@ OR
 ```
 [
   {
-    "adjectives": "sad"
+    "content": "sad"
   },
   {
-    "adjectives": "angry"
+    "content": "angry"
   }
 ]
 ```
@@ -551,7 +551,7 @@ Request Example:
 ```
 {
   "id": 5,
-  "adjectives": "prompt_to_update"
+  "content": "prompt_to_update"
 }
 ```
 
@@ -566,7 +566,7 @@ Response Example:
 
 {
   "id": 5",
-  "adjectives" : "prompt_to_update"
+  "content" : "prompt_to_update"
 }
 ```
 
@@ -581,7 +581,7 @@ Request Example:
 ```
 {
   "id": "6",
-  "adjectives" : "delete_this_prompt"
+  "content" : "delete_this_prompt"
 }
 ```
 
