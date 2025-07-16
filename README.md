@@ -75,11 +75,17 @@ USERS {
 	email_address string
 	user_password string
 	available_tokens int
-	admin_privileges boolean 
+	role Role
+	profile_id int
+	created_at Date
+	updated_at Date
+	
 }
 PROMPTS {
  	id int PK
-	adjectives text
+	content string
+    	created_at Date
+    	updated_at Date
 }
 PROMPTS_COLLECTION {
 	id int PK
@@ -90,9 +96,17 @@ PROMPTS_COLLECTION {
 ORCS {
  	id int PK
 	name string
+    	description text
+    	str int
+    	dex int
+    	con int
+    	int int
+    	wis int
+    	cha int
+    	prompts_collection_id int FK
 	orc_images_id int FK
-	prompts_collection_id int FK
-	user_id int FK
+    	user_id int FK
+    	created_at Date
 }
 ORC_IMAGES {
 	id int PK
@@ -102,29 +116,26 @@ ORC_IMAGES {
 }
 ORC_HEAD {
 	id int
-	url text 
+	url string
 }
 ORC_TORSO {
 	id int
-	url text 
+	url string
 }
 ORC_LEGS {
 	id int
-	url text 
+	url string
 }
 BACKGROUND_IMAGES {
  	id int PK
 	image_name string
 	url string
 }
-ORC_CATALOGUE {
-	id int PK
-	orc_id int FK
-	catalogue_id int FK
-}
 CATALOGUE {
     id int PK
     syllables string
+    created_at Date
+    updated_at Date
 }
 	USERS ||--|{ PROMPTS_COLLECTION : creates
 	USERS ||--|{ ORCS : owns
@@ -133,7 +144,6 @@ CATALOGUE {
 	ORCS ||--|| CATALOGUE : uses
 	ORC_IMAGES ||--|{ CHARACTER_BODY_PART_IMAGES : uses
 	ORC_BODY_PART_IMAGES }|--|{ CHARACTER_BODY_PART_IMAGE_TYPES : uses
-	ORC_CATALOGUE ||--|{ CHARACTERS : generates
 	PROMPTS_COLLECTION ||--|{ PROMPTS : uses
 	
 ```
@@ -189,12 +199,42 @@ Response Example
 }
 ```
 
+### GET /users/{id}
+
+Description: Get a single user or an array of users matching the value in the request
+
+Request Example:
+```
+{
+  "user_name": "test"
+}
+```
+Response codes:
+
+200 OK\
+404 Not Found
+
+Response Example
+```
+[
+  {
+    "id": 1,
+    "user_name": "testadmin",
+    "email_address": "adminaccount@example.com",
+  },
+  {
+    "id": 2,
+    "user_name": "testuser",
+    "email_address": "testaccount@example.com",
+  }
+]
+```
 ---
 ## Users POST requests
 
 ### POST /users
 
-Description: Register an account for a new user.
+Description: Register an account for a new user and returns a confirmation message on success.
 
 Request Example:
 ```
@@ -202,7 +242,6 @@ Request Example:
   "user_name": "newUser",
   "email_address": "new_user@example.com,
   "user_password": "encryptedPassword",
-  "admin_privileges": 0
 }
 ```
 
@@ -214,27 +253,19 @@ Response codes:
 
 Response Example:
 ```
-{
-  "id": 3,
-  "user_name": "newUser",
-  "email_address": "new_user@example.com",
-  "admin_privileges": 0,
-  "profile_id": 3
-}
+"User successfully registered: " + {userName}
 ```
-
 ---
 ## Users PUT requests
 
 ### PUT users/{id}
 
-Description: Update a single user account.
+Description: Update a single user account and returns a confirmation message on success.
 
 Request Example:
 ```
 {
-  "user_name": "new_user",
-  "admin_privileges": 0
+  "user_name": "update_user",
 }
 ```
 
@@ -244,14 +275,9 @@ Response codes:
 201 Created\
 400 Bad Request
 
+Response example:
 ```
-Response Example:
-
-{
-  "id": 3,
-  "user_name": "updated_new_user",
-  "email_address": "updated_email@example.com",
-}
+"User successfully updated: " + {userName}
 ```
 
 ---
@@ -259,15 +285,12 @@ Response Example:
 
 ### DELETE users/{id}
 
-Description: Delete a single user account.
+Description: Delete a single user account by id and return confirmation message on success.
 
 Request Example:
 ```
 {
-  "user_name": "deletedUser",
-  "email_address": "deleted_user@example.com,
-  "user_password": "encryptedPassword",
-  "admin_privileges": 0
+  "id" : 1
 }
 ```
 
@@ -275,6 +298,12 @@ Response codes:
 
 204 Resource deleted successfully\
 404 Not found
+
+Response example:
+
+```
+"User successfully deleted: " + {deletedUserName}
+```
 
 ---
 
